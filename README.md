@@ -102,9 +102,9 @@ You can chose to use **named params** for clarity (the order does not matter her
 {{< bibliography src="path/to/bib.json" cited="true" >}}
 ```
 
-#### Front-Matter
+#### Front Matter
 
-Instead of specifying the custom path inside your shortcode, you can specify it in the content page’s **front-matter** (this is especially uesful when you want to restrict to cited entries):
+Instead of specifying the custom path inside your shortcode, you can specify it in the content page’s **front matter** (this is especially uesful when you want to restrict to cited entries):
 
 ```markdown
 ---
