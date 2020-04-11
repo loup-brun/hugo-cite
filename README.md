@@ -155,7 +155,7 @@ Here’s an excerpt of a CSL-JSON file:
 ]
 ```
 
-Using the citation key defined in the CSL-JSON, you can use it in content files:
+Using the citation key defined in the CSL-JSON, you can reference your entry in content files:
 
 ```markdown
 <!-- Markdown -->
