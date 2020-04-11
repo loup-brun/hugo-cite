@@ -5,6 +5,10 @@ Easily manage your bibliography and in-text citations with [Hugo](https://gohugo
 ⚠️ **Important note: APA is the only style currently available, and you must be aware that it does not match the entire APA spec.**  
 More styles may be added eventually (contributions welcome!), but given that they are extremely verbose to implement, this is unlikely to happen in a near future.
 
+Screenshot:
+
+![Screenshot](https://user-images.githubusercontent.com/9596476/79055177-eddd8b00-7c18-11ea-8fe8-bad1bd8b2297.jpg)
+
 ## Install
 
 1. Copy the partials to your `layouts/partials` directory. Make sure to mirror the directory structure (`layouts/partials/bibliography/`) in your own project.
