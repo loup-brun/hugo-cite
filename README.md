@@ -133,6 +133,7 @@ Here’s an excerpt of a CSL-JSON file:
             {
                 "family": "Lessig",
                 "given": "Lawrence"
+            }
         ]
     }
 ]
