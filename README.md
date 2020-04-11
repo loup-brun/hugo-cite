@@ -2,13 +2,13 @@
 
 Easily manage your bibliography and in-text citations with [Hugo](https://gohugo.io), the popular static-site generator. 📝
 
-⚠️ **Important note: APA is the only style currently available, and you should be aware that it does not rigourously match the entire APA spec.**
+⚠️ **Important note: APA is the only style currently available, and you must be aware that it does not match the entire APA spec.**  
 More styles may be added eventually (contributions welcome!), but given that they are extremely verbose to implement, this is unlikely to happen in a near future.
 
 ## Install
 
-1. Copy the **partials** to your `layouts/partials` directory. Make sure to mirror the directory structure (`layouts/partials/bibliography/`) in your own project.
-2. Copy the **shortcodes** to your shortcodes directory (`layouts/shortcodes/`).
+1. Copy the partials to your `layouts/partials` directory. Make sure to mirror the directory structure (`layouts/partials/bibliography/`) in your own project.
+2. Copy the shortcodes to your shortcodes directory (`layouts/shortcodes/`).
 
 ```
 # Your Hugo project directory
@@ -128,11 +128,12 @@ Here’s an excerpt of a CSL-JSON file:
 ```json
 [
     {
-        "id": "Lessig 2002", // arbitry citation key
+        "id": "Lessig 2002",
         "author": [
-            ...
-        ],
-        ...
+            {
+                "family": "Lessig",
+                "given": "Lawrence"
+        ]
     }
 ]
 ```
@@ -140,7 +141,9 @@ Here’s an excerpt of a CSL-JSON file:
 Using the citation key defined in the CSL-JSON, you can use it in content files:
 
 ```markdown
-Our generation has a philosopher. He is not an artist, or a professional writer. He is a programmer. {{< cite "Lessig 2002" >}}
+Our generation has a philosopher.
+He is not an artist, or a professional writer.
+He is a programmer. {{< cite "Lessig 2002" >}}
 
 ## Cited Works
 
