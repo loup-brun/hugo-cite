@@ -1,0 +1,216 @@
+{{/* 
+  APA-Style Citation
+
+
+  Book Template : 
+
+    Author Surname, First Initial. Second Initial. (Year). <i>Book title: Subtitle</i>. Place of Publication: Publisher. [DOI]
+
+  Journal Template:
+
+    Author, I. N. (Year). Title of the article. <i>Title of the Journal or Periodical, volume number(issue number)</i>, page numbers. [DOI]
+
+  https://apastyle.apa.org/style-grammar-guidelines/references/examples
+
+*/}}
+
+{{/* BEGIN author */}}
+{{- define "authorPart" }}
+  {{ $authors := .author }}
+  {{- if $authors -}}
+  {{- $totalAuthors := len $authors -}}
+  {{- range $authorIndex, $author := .author -}}
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+    {{- with $author.family -}}
+    <span itemprop="familyName">{{ . }}</span>
+    {{- end -}} 
+    {{- with $author.given -}},&#32;
+    <meta itemprop="givenName" content="{{ . }}" />
+    {{ substr . 0 1 }}.
+    {{- end -}}{{/* First letter (initial). */}}
+    {{- with $author.secondInitial -}}&#32;
+    <meta itemprop="additionalName" content="{{ . }}" />
+    {{- substr . 0 1 -}}.{{- end -}}
+  </span>
+  {{- if and (gt $totalAuthors 1) (lt (add $authorIndex 2) $totalAuthors) -}},&#32;
+  {{ end -}}
+  {{ if eq $totalAuthors (add $authorIndex 2) -}}&#32;&amp;&#32;{{ end -}}{{/* Last name has ampersand */}}
+  {{- end -}}
+  {{- end -}}
+{{- end }}{{/* END author*/}}
+
+{{/* BEGIN issued (year of publication) */}}
+{{- define "issuedPart" }}
+  {{- if and (isset . "issued") (isset .issued "date-parts") -}}
+    {{/* range of dates */}}
+    (<span itemprop="datePublished">
+    {{- range $index, $dateParts := (index .issued "date-parts") -}}
+    {{- if gt $index 0 -}}, {{ end -}}{{/* Separate other years by comma */}}
+    {{- range first 1 $dateParts -}}{{/* First element in date-part is the year */}}
+    {{- . -}}
+    {{- end -}}
+    {{- end -}}
+    </span>)
+  {{- else }}
+  (n.d.){{/* no date */}}
+  {{- end }}
+{{- end }}{{/* END issued */}}
+
+{{/* BEGIN full issued (year, month day) */}}
+{{- define "issuedFullPart" }}
+  {{- if and (isset . "issued") (isset .issued "date-parts") -}}
+    (<span itemprop="datePublished">
+    {{- range (index .issued "date-parts") -}}
+    {{- index . 0 -}}{{/* year */}}
+    {{- if (index . 1) -}}
+    ,&#32;{{- index . 1 -}}{{/* month */}}
+    {{- end }}
+    {{- with index . 2 -}}
+    /{{- . }}{{/* day */}}
+    {{- end -}}
+    {{- end -}}
+    </span>)
+  {{- else }}
+  (s.d.){{/* no date */}}
+  {{- end }}
+{{- end }}{{/* END issued */}}
+
+{{/* BEGIN DOI */}}
+{{- define "DOIPart" }}
+  {{ if .DOI -}}
+  <a href="https://doi.org/{{- .DOI -}}">https://doi.org/{{- .DOI -}}</a>
+  {{ else if .URL }}
+  Retrieved from <a href="{{- .URL -}}">{{- .URL -}}</a>
+  {{- end -}}
+{{- end }} {{/* END DOI*/}}
+
+{{/* -------------------- BEGIN TYPES -------------------- */}}
+{{/* -------------------- BEGIN BOOK TYPE -------------------- */}}
+{{- if or (eq .type "book") (eq .type "chapter") -}}
+<span itemscope 
+      itemtype="https://schema.org/Book"
+      data-type="book">
+  {{ template "authorPart" . }}
+  &#32;
+  {{- template "issuedPart" . }}.
+  &#32;
+  {{- if .title -}}
+  <span itemprop="name">
+    <i>{{/* italicize title */}}
+      {{- .title | markdownify -}}
+      {{- if .subtitle }}: {{ .subtitle | markdownify }}{{- end -}}
+    </i></span>{{/* close to avoid space */}}
+  {{- end -}}
+  {{- if or (isset . "edition") (isset . "page") }} (
+  {{- with .edition -}}
+  <span>{{ . }}</span>
+  {{- end -}}
+  {{- if and (isset . "edition") (isset . "page") -}}, {{ end -}}
+  {{- if isset . "page" -}}
+  <span>pp.&nbsp;{{ echoParam . "page" }}</span>
+  {{- end -}}
+  ){{- end -}}.
+  {{ if isset . "publisher-place" -}}
+  <span itemprop="datePublished">
+    {{- echoParam . "publisher-place" | markdownify -}}
+  </span>
+  {{- end -}}
+  {{- if and (isset . "publisher-place") (isset . "publisher") }}: {{ end -}}
+  {{ with .publisher -}}
+    <span itemprop="publisher" itemtype="http://schema.org/Organization" itemscope=""><span itemprop="name">
+      {{- . -}}
+      </span></span>
+  {{- end }}{{ if or (isset . "publisher-place") (isset . "publisher") }}.{{ end }}
+
+  {{ template "DOIPart" . }}
+</span>
+{{/* -------------------- END BOOK TYPE -------------------- */}}
+
+{{/* -------------------- BEGIN ARTICLE TYPE -------------------- */}}
+{{- else if or (eq .type "article-journal") (eq .type "article") -}}
+<span id="{{ urlize .id }}"
+     itemscope
+     itemtype="https://schema.org/Article"
+     data-type="article">
+  {{- template "authorPart" . }}
+  &#32;
+  {{- template "issuedPart" . }}.
+  &#32;
+  {{- if .title -}}
+  <span itemprop="name">
+    {{- .title | markdownify -}}
+  </span>.
+  {{- end -}}
+
+  {{ if isset . "container-title" }}
+  <i>{{/* italicize journal title */}}
+    <span itemprop="publisher"
+          itemtype="http://schema.org/Organization"
+          itemscope="">
+    {{- echoParam . "container-title" -}}</span>
+    {{- if isset . "volume" -}}
+    ,&#32;{{- .volume -}}
+    {{- end -}}
+    {{- if isset . "issue" }}({{ .issue }})
+    {{- end -}}
+    </i>.{{- end -}}
+  {{- if isset . "page" -}}
+  &#32;<span>{{ replace .page "-" "–" }}.</span>
+  {{- end -}}
+
+  {{ template "DOIPart" . }}
+</span>
+{{/* -------------------- END ARTICLE TYPE -------------------- */}}
+
+{{/* -------------------- BEGIN WEBPAGE TYPE -------------------- */}}
+{{- else if eq .type "webpage" -}}
+{{ template "authorPart" .}}
+{{ template "issuedFullPart" . }}.
+{{- if .URL }}
+Retrieved from <a href="{{ .URL }}">{{ .URL }}</a>
+{{- end }}
+{{/* -------------------- END WEBPAGE TYPE -------------------- */}}
+
+{{/* -------------------- BEGIN DEFAULT APA -------------------- */}}
+{{- else -}}
+<span itemscope
+      itemtype="https://schema.org/Work"
+      data-type="{{ .type | default "default" }}">
+  {{- template "authorPart" . }}
+  &#32;
+  {{- template "issuedPart" . }}.
+  &#32;
+  {{- if .title -}}
+  <span itemprop="name">
+    <i>{{/* italicize title */}}
+      {{- .title | markdownify -}}
+      {{- if .subtitle }}: {{ .subtitle | markdownify }}{{- end -}}
+    </i></span>{{/* close to avoid space */}}
+  {{- end -}}
+  {{- if or (isset . "edition") (isset . "page") }} (
+  {{- with .edition -}}
+  <span>{{ . }}</span>
+  {{- end -}}
+  {{- if and (isset . "edition") (isset . "page") -}}, {{ end -}}
+  {{- if isset . "page" -}}
+  <span>pp.&nbsp;{{ echoParam . "page" }}</span>
+  {{- end -}}
+  ){{- end -}}.
+  {{ if isset . "publisher-place" -}}
+  <span itemprop="datePublished">
+    {{- echoParam . "publisher-place" | markdownify -}}
+  </span>
+  {{- end -}}
+  {{- if and (isset . "publisher-place") (isset . "publisher") }}:&#32;{{ end -}}
+  {{- with .publisher -}}
+    <span itemprop="publisher" itemtype="http://schema.org/Organization" itemscope="">
+      <span itemprop="name">
+      {{- . -}}
+      </span></span>
+  {{- end }}{{ if or (isset . "publisher-place") (isset . "publisher") }}.{{ end }}
+
+  {{ template "DOIPart" . }}
+</span>
+{{- end -}}
+{{/* -------------------- END DEFAULT APA -------------------- */}}
+{{/* -------------------- END TYPES -------------------- */}}

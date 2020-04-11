@@ -1,0 +1,95 @@
+{{/* 
+  Bibliography List
+
+  - You can change the citationStyle in the site's `config.yml` file.
+  - Citation template files must match the name of the style
+    (e.g. `apa` => `apa-style.html`) and must be located inside the
+    `layouts/partials/bibliography/` directory.
+  - This partial expects a map with the following property:
+    
+    references: references
+
+  CSL-JSON spec:
+  https://citeproc-js.readthedocs.io/en/latest/csl-json/markup.html
+*/}}
+
+{{- $errorMissingPartialStyle := dict "Style de citation" "q-cite" "message" "Aucun modèle ne correspond au style de citation entré. Assurez-vous que le style explicité dans `.Site.params` se trouve dans `partials/bibliography`. Par exemple : " "example" "citationStyle: apa" -}}
+
+{{/* -------------------- 1. BEGIN CITATION STYLE BLOCK -------------------- */}}
+{{/* APA style by default */}}
+{{- $citationStyle := "apa" }}
+
+{{/* If the citationStyle is specified in the site config, use it. */}}
+{{- if $.Site.Params.citationStyle }}
+{{- $citationStyle = $.Site.Params.citationStyle }}
+{{- end }}
+
+{{/* Catch if there is no matching template for the style */}}
+{{- if not (templates.Exists (printf "partials/bibliography/%s-style.html" $citationStyle)) }}
+  {{- errorf "The provided citationStyle does not exist: `%s`. Please make sure that a file named `%s-style.html` file exists in your layouts/partials/bibliography directory." $citationStyle $citationStyle }}
+{{- else }}
+{{/* -------------------- END CITATION STYLE BLOCK -------------------- */}}
+
+{{/* -------------------- 2. BEGIN REFERENCES BLOCK -------------------- */}}
+{{- $references := .references }}
+
+{{ if $references }}
+<section class="hugo-cite-bibliography">
+  <dl>
+    {{/* -------------------- BEGIN RANGE BIBLIOGRAPHY -------------------- */}}
+    {{- range $refIndex, $refObject := $references -}}
+      {{- $currentRef := index $references $refIndex }}
+
+      {{- $partialPath := string (printf "bibliography/%s-style.html" $citationStyle) }}
+
+      <div id="{{ $currentRef.id | urlize }}">
+        <dt>
+          {{/* 
+            Author-date in-text citation
+          */}}
+
+          {{ $authors := .author }}
+          {{- if not $authors -}}
+          (N.A.){{/* Fallback if no authors are specified */}}
+          {{- else -}}
+
+          {{- $totalAuthors := len $authors -}}
+          {{- range $authorIndex, $author := .author -}}{{/* BEGIN authors loop */}}
+
+          {{- with $author.family -}}
+          {{ . }}
+          {{- end }}
+          {{- if and (gt $totalAuthors 1) (lt (add $authorIndex 2) $totalAuthors) -}},&#32;
+          {{ end -}}
+          {{ if eq $totalAuthors (add $authorIndex 2) -}}&#32;&amp;&#32;{{ end -}}{{/* Last name has ampersand */}}
+          {{- end -}}
+
+          {{- end -}}{{/* END authors loop */}}
+
+          {{/* Begin Issued */}}
+          ({{- if and (isset $currentRef "issued") (isset .issued "date-parts") -}}
+          {{- range $index, $dateParts := (index $currentRef.issued "date-parts") -}}
+          {{- if gt $index 0 -}},&#32;{{ end -}}
+          {{- range first 1 $dateParts -}}{{- . -}}{{- end -}}
+          {{- end -}}
+          {{- else -}}
+          <i>n.d.</i>{{/* Fallback if no date */}}
+          {{- end -}}){{/* End Issued */}}</dt>
+
+        <dd>
+          {{/*
+            Full bibliographic notice
+          */}}
+
+          {{- partial $partialPath $currentRef -}}</dd>
+
+      </div>
+    {{- end -}}
+    {{/* -------------------- END RANGE BIBLIOGRAPHY -------------------- */}}
+  </dl>
+</section>
+{{- else }}
+{{ printf "Bibliography called, but no references" }}
+{{- end }}
+{{- end }}
+{{/* -------------------- END REFERENCES BLOCK -------------------- */}}
