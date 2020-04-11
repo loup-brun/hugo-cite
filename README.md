@@ -57,6 +57,8 @@ There are two shortcodes you can use in your content:
 By default, the `{{< bibliography >}}` shortcode will render all entries from a `bib.json` included in a [leaf bundle](https://gohugo.io/content-management/page-bundles/#leaf-bundles). 
 
 ```markdown
+<!-- Markdown -->
+
 {{< bibliography >}}
 ```
 
@@ -65,6 +67,8 @@ By default, the `{{< bibliography >}}` shortcode will render all entries from a 
 You can also specify another JSON file located *inside* the Hugo project directory:
 
 ```markdown
+<!-- Markdown -->
+
 {{< bibliography "path/to/bib.json" >}}
 ```
 
@@ -73,6 +77,8 @@ You can also specify another JSON file located *inside* the Hugo project directo
 You can restrict the list only to works cited on the page (with the use of in-text citations, see below):
 
 ```markdown
+<!-- Markdown -->
+
 {{< bibliography cited >}}
 ```
 
@@ -81,6 +87,8 @@ You can restrict the list only to works cited on the page (with the use of in-te
 You can also **combine both options** (the path to the JSON file must come first however):
 
 ```markdown
+<!-- Markdown -->
+
 {{< bibliography "path/to/bib.json" cited >}}
 ```
 
@@ -89,6 +97,8 @@ You can also **combine both options** (the path to the JSON file must come first
 You can chose to use **named params** for clarity (the order does not matter here):
 
 ```markdown
+<!-- Markdown -->
+
 {{< bibliography src="path/to/bib.json" cited="true" >}}
 ```
 
@@ -114,6 +124,8 @@ Thanks to Hugo’s `getJSON` function, you can also provide a **URL**.
 *Note however that this method may have some drawbacks if you are [reloading often](https://gohugo.io/templates/data-templates/#livereload-with-data-files), see the Hugo docs regarding potential issues.*
 
 ```markdown
+<!-- Markdown -->
+
 {{< bibliography "https://example.com/my/bib.json" >}}
 ```
 
@@ -142,6 +154,8 @@ Here’s an excerpt of a CSL-JSON file:
 Using the citation key defined in the CSL-JSON, you can use it in content files:
 
 ```markdown
+<!-- Markdown -->
+
 Our generation has a philosopher.
 He is not an artist, or a professional writer.
 He is a programmer. {{< cite "Lessig 2002" >}}
