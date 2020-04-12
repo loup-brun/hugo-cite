@@ -36,7 +36,7 @@ Screenshot:
 Reference the CSS in your HTML:
 
 ```html
-<link rel="stylesheet" type="text/css" href="{{ "/hugo-cite.css" | relRef }}"
+<link rel="stylesheet" type="text/css" href="{{ "/hugo-cite.css" | relRef }}" />
 ```
 
 ## Usage
