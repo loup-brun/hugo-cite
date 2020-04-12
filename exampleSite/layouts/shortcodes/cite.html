@@ -1,0 +1,132 @@
+{{/*
+
+  This shortcode adds a linked Author Date citation reference to the text, and a
+  hover pop-up with the full citation text. It also adds the citation to a map
+  of cited works, which can then be output as a page-level bibliography using
+  the {{< bibliography >}} shortcode.
+
+  Example:
+
+  {{< cite "Faure1909" "304" >}}
+
+  The first positional parameter is a short form citation that should match one
+  ID in the bib.json file (or the file specified on the content page).
+  The second, optional parameter is a page reference. Given there is one author
+  in the work with `id` "Faure1909", named Faure, with issued year of 1909, the
+  above would output as:
+
+    (Faure 1909, 54)
+
+    with a link to the complete reference.
+
+  The bibliography file must be a CSL-JSON, specified either in page’s front-
+  matter with the `bibFile` parameter, or in a leaf bundle, with "bib" in
+  the file name.
+
+*/}}
+
+{{- $errorMissingValue := "1 or 2 values must be supplied with this shortcode. The first is required and should match an ID in the CSL-JSON bibliogrpahy file, the second is optional, and should be a page number or range of page numbers. Example: {{< cite &#34;Faure 1909&#34; &#34;304&#34; >}}" -}}
+
+{{- $defaultErrString := "No matching ID was found for `%s` in the references. Please make sure to provide an available ID in your `bib.json` file." -}}
+
+
+{{- if and (ne (len .Params) 1) (ne (len .Params) 2) -}}
+{{- errorf $errorMissingValue -}}
+{{- else -}}
+{{- $id := .Get 0 -}}
+{{- $pages := .Get 1 -}}
+
+{{/* -------------------- BEGIN Citation style -------------------- */}}
+
+{{- $citationStyle := "apa" }}
+{{- if $.Site.Params.citationStyle }}
+  {{- if templates.Exists (printf "aprtials/bibliography/%s-style.html" $.Site.Params.citationStyle) }}
+    {{- $citationStyle = $.Site.Params.citationStyle }}
+  {{- end }}
+{{- end }}
+{{- $partialPath := string (printf "bibliography/%s-style.html" $citationStyle) }}
+{{/* -------------------- END Citation style -------------------- */}}
+
+{{/* -------------------- BEGIN Bibliography path -------------------- */}}
+{{- $bibliographyPath := "" }}
+
+{{/* Default: check for a JSON file in the leaf bundle. */}}
+{{- $pageResource := $.Page.Resources.GetMatch "*bib*.json" -}}
+{{- if $pageResource }}
+{{- $constructedBibResource := printf "content/%s%s" $.Page.File.Dir $pageResource.Name }}
+{{- $bibliographyPath = $constructedBibResource }}
+{{- end }}
+
+{{/* If a `bibFile` is specified in the page front-matter, it takes precedence
+  over a page resource. */}}
+{{/* `specifiedBib` must be relative to project root */}}
+{{- if $.Page.Params.bibFile }}
+{{- $bibliographyPath = $.Page.Params.bibFile -}}
+{{- end }}
+
+{{ if gt (len $bibliographyPath) 0 }}{{/* Begin Bibliography Loop */}}
+{{- $bibliography := getJSON $bibliographyPath -}}
+{{/* -------------------- END Bibliography path -------------------- */}}
+
+{{- range where $bibliography "id" "eq" $id -}}
+  {{- $currentRef := . -}}
+
+  {{/* Add to the collection of cited references */}}
+  {{- $.Page.Scratch.SetInMap "citedBib" $id $currentRef -}}
+
+  {{/* Add to the collection of cited references */}}
+  {{- $.Page.Scratch.SetInMap "citedBib" $id $currentRef -}}
+
+  <span class="hugo-cite-intext"
+        itemprop="citation">(<a href="#{{- $id | urlize -}}"><span class="visually-hidden">Citation: </span>
+      {{- $reference := . -}}
+
+      {{- if not $currentRef.author -}}
+      <span rel="noauthor">S. A.</span>
+      {{- else -}}
+      {{- range first 1 $currentRef.author }}
+      {{- $author := . -}}
+      <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+        {{- with $author.given -}}
+        <meta itemprop="givenName" content="{{ . }}">
+        {{- end -}}
+        {{ with $author.family -}}
+        <span itemprop="familyName">{{ . | markdownify }}</span>
+        {{- end -}}
+      </span>
+      {{- end -}}
+      {{ if gt (len $currentRef.author) 1 }}
+      <em>&amp; al.</em>
+      {{- end -}}
+      {{- end }}
+      {{ if and (isset $currentRef "issued") (isset $currentRef.issued "date-parts") }}
+      {{/* range of dates */}}
+      <span itemprop="datePublished">
+      {{- range $index, $dateParts := (index .issued "date-parts") -}}
+      {{/* Separate other years by comma */}}
+      {{- if gt $index 0 -}}, {{ end -}}
+      {{/* First element in date-part is the year */}}
+      {{- range first 1 $dateParts -}}
+      {{- . -}}
+      {{- end -}}
+      {{- end -}}
+      </span>
+      {{- end -}}
+      {{- with $pages -}}
+      , pp.&nbsp;{{ . }}
+      {{- end -}}
+    </a>)
+    <span class="hugo-cite-citation">{{ partial $partialPath $currentRef }}</span></span>
+
+  {{- else -}}
+
+    {{/* 
+      Did not find reference with matching ID
+    */}}
+    {{- $particularIdErr := printf $defaultErrString (.Get 0) -}}
+    {{- $errorNoMatchingId := $particularIdErr -}}
+    <span style="background-color: #f00; color: #fff;">{{- $errorNoMatchingId -}}</span>
+
+  {{- end }}
+{{- end }}
+{{- end -}}{{/* End Bibliography Loop */}}
