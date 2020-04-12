@@ -54,7 +54,7 @@ Here is an example:
 |   ├── article1
 |   |   ├── bib.json
 |   |   └── index.md
-|   └── article2
+|   ├── article2
 |   |   ├── image.jpg
 |   |   ├── index.md
 |   |   └── mr-bib.json
