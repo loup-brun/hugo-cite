@@ -16,10 +16,10 @@
 
 {{/* BEGIN author */}}
 {{- define "authorPart" }}
-  {{ $authors := .author }}
+  {{- $authors := .author }}
   {{- if $authors -}}
   {{- $totalAuthors := len $authors -}}
-  {{- range $authorIndex, $author := .author -}}
+  {{- range $authorIndex, $author := $authors -}}
   <span itemprop="author" itemscope itemtype="https://schema.org/Person">
     {{- with $author.family -}}
     <span itemprop="familyName">{{ . }}</span>
@@ -37,7 +37,32 @@
   {{ if eq $totalAuthors (add $authorIndex 2) -}}&#32;&amp;&#32;{{ end -}}{{/* Last name has ampersand */}}
   {{- end -}}
   {{- end -}}
-{{- end }}{{/* END author*/}}
+{{- end -}}{{/* END author */}}
+
+{{/* BEGIN editor */}}
+{{- define "editorPart" }}
+  {{- $editors := .editor }}
+  {{- if $editors -}}
+  {{- $totalEditors := len $editors -}}
+  {{- range $editorIndex, $editor := $editors -}}
+  <span itemprop="editor" itemscope itemtype="https://schema.org/Person">
+    {{- with $editor.family -}}
+    <span itemprop="familyName">{{ . }}</span>
+    {{- end -}} 
+    {{- with $editor.given -}},&#32;
+    <meta itemprop="givenName" content="{{ . }}" />
+    {{ substr . 0 1 }}.
+    {{- end -}}{{/* First letter (initial). */}}
+    {{- with $editor.secondInitial -}}&#32;
+    <meta itemprop="additionalName" content="{{ . }}" />
+    {{- substr . 0 1 -}}.{{- end -}}
+  </span>
+  {{- if and (gt $totalEditors 1) (lt (add $editorIndex 2) $totalEditors) -}},&#32;
+  {{ end -}}
+  {{ if eq $totalEditors (add $editorIndex 2) -}}&#32;&amp;&#32;{{ end -}}{{/* Last name has ampersand */}}
+  {{- end -}}
+  {{- end -}}
+{{- end -}}{{/* END editor */}}
 
 {{/* BEGIN issued (year of publication) */}}
 {{- define "issuedPart" }}
@@ -78,15 +103,20 @@
 {{/* BEGIN DOI */}}
 {{- define "DOIPart" }}
   {{ if .DOI -}}
-  <a href="https://doi.org/{{- .DOI -}}">https://doi.org/{{- .DOI -}}</a>
+  <a href="https://doi.org/{{ .DOI }}"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://doi.org/{{- .DOI -}}</a>
   {{ else if .URL }}
-  Retrieved from <a href="{{- .URL -}}">{{- .URL -}}</a>
+  Retrieved from
+  <a href="{{ .URL }}"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">{{ .URL }}</a>
   {{- end -}}
 {{- end }} {{/* END DOI*/}}
 
 {{/* -------------------- BEGIN TYPES -------------------- */}}
 {{/* -------------------- BEGIN BOOK TYPE -------------------- */}}
-{{- if or (eq .type "book") (eq .type "chapter") -}}
+{{- if eq .type "book" -}}
 <span itemscope 
       itemtype="https://schema.org/Book"
       data-type="book">
@@ -107,24 +137,78 @@
   {{- end -}}
   {{- if and (isset . "edition") (isset . "page") -}}, {{ end -}}
   {{- if isset . "page" -}}
-  <span>{{ echoParam . "page" }}&#32;p.</span>
+  <meta itemprop="numberOfPages" content="{{ .page }}">
   {{- end -}}
   ){{- end -}}.
   {{ if isset . "publisher-place" -}}
-  <span itemprop="datePublished">
-    {{- echoParam . "publisher-place" | markdownify -}}
-  </span>
+  <meta itemprop="contentLocation"
+        value="{{- echoParam . "publisher-place" -}}">
   {{- end -}}
-  {{- if and (isset . "publisher-place") (isset . "publisher") }}: {{ end -}}
-  {{ with .publisher -}}
-    <span itemprop="publisher" itemtype="http://schema.org/Organization" itemscope=""><span itemprop="name">
-      {{- . -}}
-      </span></span>
-  {{- end }}{{ if or (isset . "publisher-place") (isset . "publisher") }}.{{ end }}
+  {{- with .publisher -}}
+    &#32;<span itemprop="publisher"
+               itemtype="http://schema.org/Organization"
+               itemscope="">
+      <span itemprop="name">
+        {{- . -}}
+      </span></span>.
+  {{- end }}
 
   {{ template "DOIPart" . }}
 </span>
 {{/* -------------------- END BOOK TYPE -------------------- */}}
+
+{{/* -------------------- BEGIN CHAPTER TYPE -------------------- */}}
+{{- else if eq .type "chapter" -}}
+<span itemscope 
+      itemtype="https://schema.org/Chapter"
+      data-type="chapter">
+  {{ template "authorPart" . }}
+  &#32;
+  {{- template "issuedPart" . }}.
+  &#32;
+  {{- if .title -}}
+  <span itemprop="name">
+    {{- .title | markdownify -}}
+    {{- if .subtitle }}: {{ .subtitle | markdownify }}{{- end -}}
+  </span>.
+  {{- end -}}
+
+  {{- if isset . "container-title" -}}
+  &#32;In
+  {{ if .editor }}
+  {{- template "editorPart" . }} (Eds.),&#32;
+  {{- end -}}
+
+  <span itemprop="about">
+    <i>{{/* italicize title */}}
+      {{- echoParam . "container-title" -}}
+    </i></span>.{{/* close to avoid space */}}
+  {{- end -}}
+  {{- if or (isset . "edition") (isset . "page") -}}&#32;(
+  {{- if isset . "edition" -}}
+  <span itemprop="workExample">{{ .edition }}</span>
+  {{- if isset . "page" -}}, {{ end -}}
+  {{- end -}}
+  {{- if isset . "page" -}}
+  <span>pp.&#32;{{ replace .page "-" "–" }}</span>
+  {{- end -}}
+  ){{- end -}}.
+  {{ if isset . "publisher-place" -}}
+  <meta itemprop="contentLocation"
+        value="{{- echoParam . "publisher-place" -}}">
+  {{- end -}}
+  {{- with .publisher -}}
+    &#32;<span itemprop="publisher"
+               itemtype="http://schema.org/Organization"
+               itemscope="">
+      <span itemprop="name">
+      {{- . -}}
+      </span></span>.
+  {{- end }}
+
+  {{ template "DOIPart" . }}
+</span>
+{{/* -------------------- END CHAPTER TYPE -------------------- */}}
 
 {{/* -------------------- BEGIN ARTICLE TYPE -------------------- */}}
 {{- else if or (eq .type "article-journal") (eq .type "article") -}}
@@ -154,7 +238,7 @@
     {{- end -}}
     </i>.{{- end -}}
   {{- if isset . "page" -}}
-  &#32;<span>{{ replace .page "-" "–" }}.</span>
+  &#32;<span itemprop="pagination">{{ replace .page "-" "–" }}</span>.
   {{- end -}}
 
   {{ template "DOIPart" . }}
@@ -173,7 +257,7 @@ Retrieved from <a href="{{ .URL }}">{{ .URL }}</a>
 {{/* -------------------- BEGIN DEFAULT APA -------------------- */}}
 {{- else -}}
 <span itemscope
-      itemtype="https://schema.org/Work"
+      itemtype="https://schema.org/CreativeWork"
       data-type="{{ .type | default "default" }}">
   {{- template "authorPart" . }}
   &#32;
@@ -186,27 +270,19 @@ Retrieved from <a href="{{ .URL }}">{{ .URL }}</a>
       {{- if .subtitle }}: {{ .subtitle | markdownify }}{{- end -}}
     </i></span>{{/* close to avoid space */}}
   {{- end -}}
-  {{- if or (isset . "edition") (isset . "page") }} (
-  {{- with .edition -}}
-  <span>{{ . }}</span>
-  {{- end -}}
-  {{- if and (isset . "edition") (isset . "page") -}}, {{ end -}}
-  {{- if isset . "page" -}}
-  <span>{{ echoParam . "page" }}&#32;p.</span>
-  {{- end -}}
+  {{- if isset . "edition" }} (
+  <span span itemprop="workExample">{{ .edition }}</span>
   ){{- end -}}.
   {{ if isset . "publisher-place" -}}
-  <span itemprop="datePublished">
-    {{- echoParam . "publisher-place" | markdownify -}}
-  </span>
+  <meta itemprop="contentLocation"
+        content="{{- echoParam . "publisher-place" -}}">
   {{- end -}}
-  {{- if and (isset . "publisher-place") (isset . "publisher") }}:&#32;{{ end -}}
   {{- with .publisher -}}
-    <span itemprop="publisher" itemtype="http://schema.org/Organization" itemscope="">
+    &#32;<span itemprop="publisher" itemtype="http://schema.org/Organization" itemscope="">
       <span itemprop="name">
       {{- . -}}
-      </span></span>
-  {{- end }}{{ if or (isset . "publisher-place") (isset . "publisher") }}.{{ end }}
+      </span></span>.
+  {{- end }}
 
   {{ template "DOIPart" . }}
 </span>
