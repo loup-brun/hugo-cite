@@ -57,7 +57,13 @@ Here is an example:
 |   └── article2
 |       ├── index.md
 |       ├── image.jpg
-|       └── bib.json
+|       └── mr-bib.json
+|   └── article3
+|       ├── index.md
+|       └── oh-my-bib.json
+└── path
+    └── to
+        └── bib.json
 ```
 
 ### Shortcodes
@@ -126,12 +132,12 @@ Instead of specifying the custom path inside your shortcode, you can specify it 
 ```markdown
 ---
 title: My Article
-bibFile: oh/my/bib.json # path relative to project root
+bibFile: path/to/bib.json # path relative to project root
 ---
 
 ## Bibliography
 
-<!-- The bibliography will display works from oh/my/bib.json -->
+<!-- The bibliography will display works from path/to/bib.json -->
 {{< bibliography >}}
 ```
 
