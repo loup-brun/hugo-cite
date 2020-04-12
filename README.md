@@ -52,9 +52,9 @@ Here is an example:
 # Your Hugo project directory
 ├── content
 |   ├── article1
-|       ├── index.md
-|       └── bib.json
-|   ├── article2
+|   |   ├── index.md
+|   |   └── bib.json
+|   └── article2
 |       ├── index.md
 |       ├── image.jpg
 |       └── bib.json
