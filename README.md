@@ -52,8 +52,8 @@ Here is an example:
 # Your Hugo project directory
 ├── content
 |   ├── article1
-|   |   ├── index.md
-|   |   └── bib.json
+|   |   ├── bib.json
+|   |   └── index.md
 |   └── article2
 |   |   ├── image.jpg
 |   |   ├── index.md
