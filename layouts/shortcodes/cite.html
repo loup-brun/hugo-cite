@@ -125,7 +125,7 @@
     */}}
     {{- $particularIdErr := printf $defaultErrString (.Get 0) -}}
     {{- $errorNoMatchingId := $particularIdErr -}}
-    {{- $errorNoMatchingId -}}
+    <span style="background-color: #f00; color: #fff;">{{- $errorNoMatchingId -}}</span>
 
   {{- end }}
 {{- end }}
