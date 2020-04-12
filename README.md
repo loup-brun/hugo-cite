@@ -22,14 +22,14 @@ Screenshot:
 ```
 # Your Hugo project directory
 ├── layouts
-|   ├── partials
-|       ├── bibliography
-|           ├── apa-style.html
-|           └── bibliography-list.html
-|   └── shortcodes
+|   ├── partials   # 1.
+|   |   └── bibliography
+|   |       ├── apa-style.html
+|   |       └── bibliography-list.html
+|   └── shortcodes # 2.
 |       ├── bibliography.html
 |       └── cite.html
-└── static
+└── static         # 3.
     └── hugo-cite.css
 ```
 
