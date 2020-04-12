@@ -1,0 +1,41 @@
+/* =============================================================================
+/* Hugo-Cite.css
+/* ----------------------------------------------------------------------------- */
+
+.hugo-cite-intext {
+  display: inline-block;
+  vertical-align: baseline; /*compensate for lower height */
+  position: relative;
+  font-size: .85em; /* reduce to avoid some breaks */
+}
+.hugo-cite-intext 
+  .hugo-cite-citation {
+    visibility: hidden;
+    background-color: #ffffff;
+    color: inherit;
+    border: 1px solid currentColor;
+    padding: 1rem;
+    position: absolute;
+    width: 350px;
+    max-width: 100vw;
+    z-index: 1;
+    bottom: 150%;
+    left: 0;
+    margin-left: -50px;
+
+    z-index: 2;
+    transition:
+      visibility 0s .5s,
+      transform .5s ease 0s,
+      opacity .5s ease 0s;
+    opacity: 0;
+    transform: translateY(-8px);
+}
+.hugo-cite-intext:hover
+  .hugo-cite-citation {
+    visibility: visible;
+    transition: visibility 0s 0s, transform .5s, opacity .5s;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

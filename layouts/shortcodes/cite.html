@@ -25,7 +25,7 @@
 
 */}}
 
-{{- $errorMissingValue "1 or 2 values must be supplied with this shortcode. The first is required and should match an ID in the CSL-JSON bibliogrpahy file, the second is optional, and should be a page number or range of page numbers. Example: {{< cite &#34;Faure 1909&#34; &#34;304&#34; >}}" -}}
+{{- $errorMissingValue := "1 or 2 values must be supplied with this shortcode. The first is required and should match an ID in the CSL-JSON bibliogrpahy file, the second is optional, and should be a page number or range of page numbers. Example: {{< cite &#34;Faure 1909&#34; &#34;304&#34; >}}" -}}
 
 {{- $defaultErrString := "No matching ID was found for `%s` in the references. Please make sure to provide an available ID in your `bib.json` file." -}}
 
@@ -74,7 +74,6 @@
   {{/* Add to the collection of cited references */}}
   {{- $.Page.Scratch.SetInMap "citedBib" $id $currentRef -}}
 
-
   {{/* Add to the collection of cited references */}}
   {{- $.Page.Scratch.SetInMap "citedBib" $id $currentRef -}}
 
@@ -121,13 +120,13 @@
 
   {{- else -}}
 
-  {{/* 
-    Did not find reference with matching ID
-  */}}
-  {{- $particularIdErr := printf $defaultErrString (.Get 0) -}}
-  {{- $errorNoMatchingId := $particularIdErr -}}
-  {{- errorf $errorNoMatchingId -}}
+    {{/* 
+      Did not find reference with matching ID
+    */}}
+    {{- $particularIdErr := printf $defaultErrString (.Get 0) -}}
+    {{- $errorNoMatchingId := $particularIdErr -}}
+    {{- $errorNoMatchingId -}}
 
-{{- end }}
+  {{- end }}
 {{- end }}
 {{- end }}{{/* End Bibliography Loop */}}

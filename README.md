@@ -1,9 +1,13 @@
 # Hugo Cite
 
-Easily manage your bibliography and in-text citations with [Hugo](https://gohugo.io), the popular static-site generator. 📝
+📝 Easily manage your bibliography and in-text citations with [Hugo](https://gohugo.io), the popular static-site generator.
+
+---
 
 ⚠️ **Important note: APA is the only style currently available, and you must be aware that it does not match the entire APA spec.**  
 More styles may be added eventually (contributions welcome!), but given that they are extremely verbose to implement, this is unlikely to happen in a near future.
+
+---
 
 Screenshot:
 
@@ -11,8 +15,9 @@ Screenshot:
 
 ## Install
 
-1. Copy the partials to your `layouts/partials` directory. Make sure to mirror the directory structure (`layouts/partials/bibliography/`) in your own project.
-2. Copy the shortcodes to your shortcodes directory (`layouts/shortcodes/`).
+1. Copy the partials in `layouts/partials/bibliography/` (make sure to mirror the directory structure).
+2. Copy the shortcodes in `layouts/shortcodes/`.
+3. Copy the CSS in your `static/` directory and reference it in your HTML.
 
 ```
 # Your Hugo project directory
@@ -24,6 +29,14 @@ Screenshot:
 |   └── shortcodes
 |       ├── bibliography.html
 |       └── cite.html
+└── static
+    └── hugo-cite.css
+```
+
+Reference the CSS in your HTML:
+
+```html
+<link rel="stylesheet" type="text/css" href="{{ "/hugo-cite.css" | relRef }}"
 ```
 
 ## Usage
@@ -170,6 +183,6 @@ He is a programmer. {{< cite "Lessig 2002" >}}
 {{< bibliography cited >}}
 ```
 
-## Licence
+## License
 
 [WTFPL](LICENSE)
