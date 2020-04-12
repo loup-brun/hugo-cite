@@ -81,7 +81,7 @@ By default, the `{{< bibliography >}}` shortcode will render all entries from a 
 
 #### Specify a Path to the JSON File
 
-You can also specify another JSON file located *inside* the Hugo project directory:
+Alternatively, you can specify the path to a JSON file located *inside* the Hugo project directory:
 
 ```markdown
 <!-- Markdown -->
@@ -101,7 +101,7 @@ You can restrict the list only to works cited on the page (with the use of in-te
 
 #### Combine Options
 
-You can also **combine both options** (the path to the JSON file must come first however):
+You can also **combine both options** (the path to the JSON file must come first):
 
 ```markdown
 <!-- Markdown -->
