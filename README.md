@@ -15,7 +15,7 @@ Screenshot:
 
 ## Install
 
-1. Copy the partials in `layouts/partials/bibliography/` (make sure to mirror the directory structure).
+1. Copy the partials in `layouts/partials/bibliography/` (make sure to mirror the same directory structure).
 2. Copy the shortcodes in `layouts/shortcodes/`.
 3. Copy the CSS in your `static/` directory and reference it in your HTML.
 
