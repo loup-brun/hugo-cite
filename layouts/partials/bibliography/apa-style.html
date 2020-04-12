@@ -128,10 +128,9 @@
 
 {{/* -------------------- BEGIN ARTICLE TYPE -------------------- */}}
 {{- else if or (eq .type "article-journal") (eq .type "article") -}}
-<span id="{{ urlize .id }}"
-     itemscope
-     itemtype="https://schema.org/Article"
-     data-type="article">
+<span itemscope
+      itemtype="https://schema.org/Article"
+      data-type="article">
   {{- template "authorPart" . }}
   &#32;
   {{- template "issuedPart" . }}.
