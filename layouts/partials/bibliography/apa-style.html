@@ -107,7 +107,7 @@
   {{- end -}}
   {{- if and (isset . "edition") (isset . "page") -}}, {{ end -}}
   {{- if isset . "page" -}}
-  <span>pp.&nbsp;{{ echoParam . "page" }}</span>
+  <span>{{ echoParam . "page" }}&#32;p.</span>
   {{- end -}}
   ){{- end -}}.
   {{ if isset . "publisher-place" -}}
@@ -192,7 +192,7 @@ Retrieved from <a href="{{ .URL }}">{{ .URL }}</a>
   {{- end -}}
   {{- if and (isset . "edition") (isset . "page") -}}, {{ end -}}
   {{- if isset . "page" -}}
-  <span>pp.&nbsp;{{ echoParam . "page" }}</span>
+  <span>{{ echoParam . "page" }}&#32;p.</span>
   {{- end -}}
   ){{- end -}}.
   {{ if isset . "publisher-place" -}}
