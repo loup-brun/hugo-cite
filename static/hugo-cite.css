@@ -19,23 +19,31 @@
     width: 350px;
     max-width: 100vw;
     z-index: 1;
-    bottom: 150%;
+    bottom: 140%;
     left: 0;
     margin-left: -50px;
 
     z-index: 2;
     transition:
-      visibility 0s .5s,
-      transform .5s ease 0s,
-      opacity .5s ease 0s;
+      visibility 0s .3s,
+      transform .3s ease 0s,
+      opacity .3s ease 0s;
     opacity: 0;
     transform: translateY(-8px);
 }
 .hugo-cite-intext:hover
   .hugo-cite-citation {
     visibility: visible;
-    transition: visibility 0s 0s, transform .5s, opacity .5s;
+    transition: visibility 0s 0s, transform .3s, opacity .3s;
     opacity: 1;
     transform: translateY(0);
-  }
+}
+
+/* Visually Hidden utility class */
+.visually-hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
