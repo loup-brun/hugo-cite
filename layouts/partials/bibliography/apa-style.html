@@ -102,17 +102,17 @@
 
 {{/* BEGIN DOI */}}
 {{- define "DOIPart" }}
-  {{ if .DOI -}}
+  {{- if .DOI }}
   <a href="https://doi.org/{{ .DOI }}"
      itemprop="identifier"
      itemtype="https://schema.org/URL">https://doi.org/{{- .DOI -}}</a>
-  {{ else if .URL }}
+  {{- else if .URL }}&#32;
   Retrieved from
   <a href="{{ .URL }}"
      itemprop="identifier"
      itemtype="https://schema.org/URL">{{ .URL }}</a>
   {{- end -}}
-{{- end }} {{/* END DOI*/}}
+{{- end }}{{/* END DOI*/}}
 
 {{/* -------------------- BEGIN TYPES -------------------- */}}
 {{/* -------------------- BEGIN BOOK TYPE -------------------- */}}
@@ -144,16 +144,16 @@
   <meta itemprop="contentLocation"
         value="{{- echoParam . "publisher-place" -}}">
   {{- end -}}
-  {{- with .publisher -}}
-    &#32;<span itemprop="publisher"
-               itemtype="http://schema.org/Organization"
-               itemscope="">
-      <span itemprop="name">
-        {{- . -}}
-      </span></span>.
+  {{- with .publisher -}}&#32;
+  <span itemprop="publisher"
+             itemtype="http://schema.org/Organization"
+             itemscope="">
+    <span itemprop="name">
+      {{- . -}}
+    </span></span>.
   {{- end }}
 
-  {{ template "DOIPart" . }}
+  {{- template "DOIPart" . -}}
 </span>
 {{/* -------------------- END BOOK TYPE -------------------- */}}
 
@@ -206,7 +206,7 @@
       </span></span>.
   {{- end }}
 
-  {{ template "DOIPart" . }}
+  {{- template "DOIPart" . -}}
 </span>
 {{/* -------------------- END CHAPTER TYPE -------------------- */}}
 
@@ -225,11 +225,9 @@
   </span>.
   {{- end -}}
 
-  {{ if isset . "container-title" }}
+  {{- if isset . "container-title" -}}
   <i>{{/* italicize journal title */}}
-    <span itemprop="publisher"
-          itemtype="http://schema.org/Organization"
-          itemscope="">
+    <span itemprop="about">
     {{- echoParam . "container-title" -}}</span>
     {{- if isset . "volume" -}}
     ,&#32;{{- .volume -}}
@@ -241,7 +239,7 @@
   &#32;<span itemprop="pagination">{{ replace .page "-" "–" }}</span>.
   {{- end -}}
 
-  {{ template "DOIPart" . }}
+  {{- template "DOIPart" . -}}
 </span>
 {{/* -------------------- END ARTICLE TYPE -------------------- */}}
 
@@ -249,7 +247,7 @@
 {{- else if eq .type "webpage" -}}
 {{ template "authorPart" .}}
 {{ template "issuedFullPart" . }}.
-{{- if .URL }}
+{{- if .URL -}}&#32;
 Retrieved from <a href="{{ .URL }}">{{ .URL }}</a>
 {{- end }}
 {{/* -------------------- END WEBPAGE TYPE -------------------- */}}
@@ -284,7 +282,7 @@ Retrieved from <a href="{{ .URL }}">{{ .URL }}</a>
       </span></span>.
   {{- end }}
 
-  {{ template "DOIPart" . }}
+  {{- template "DOIPart" . -}}
 </span>
 {{- end -}}
 {{/* -------------------- END DEFAULT APA -------------------- */}}
