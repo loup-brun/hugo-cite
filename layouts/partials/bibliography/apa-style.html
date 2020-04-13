@@ -109,7 +109,7 @@
      itemprop="identifier"
      itemtype="https://schema.org/URL">https://doi.org/{{- .DOI -}}</a>
   {{- else if .URL }}&#32;
-  {{ i18n "apa_retrieved_from" | default "Retrieved from" }}
+  {{- i18n "apa_retrieved_from" | default "Retrieved from" -}}&#32;
   <a href="{{ .URL }}"
      itemprop="identifier"
      itemtype="https://schema.org/URL">{{ .URL }}</a>
@@ -176,8 +176,8 @@
   {{- end -}}
 
   {{- if isset . "container-title" -}}
-  &#32;{{ i18n "apa_in" | default "In" }}
-  {{ if .editor }}
+  &#32;{{- i18n "apa_in" | default "In" -}}
+  {{- if .editor -}}
   {{- template "editorPart" . }} (Eds.),&#32;
   {{- end -}}
 
