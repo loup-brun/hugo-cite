@@ -13,41 +13,37 @@ More styles may be added eventually (contributions welcome!), but given that the
 
 ## Install
 
-1. Copy the partials in `layouts/partials/bibliography/` (make sure to mirror the same directory structure).
-2. Copy the shortcodes in `layouts/shortcodes/`.
-3. Copy the CSS in your `static/` directory and reference it in your HTML.
-4. (Optional) To modify the particles or to use Hugo Cite in another language than English, copy the contents of `i18n/`.
+Download Hugo Cite in the `themes/hugo-cite` directory, either by [cloning with Git](https://github.com/loup-brun/hugo-cite) (the preferred method) or by [downloading as a ZIP file](https://github.com/alex-shpak/hugo-book/archive/master.zip).
+
+The Git way:
+
+```bash
+git submodule add https://github.com/loup-brun/hugo-cite.git themes/hugo-cite
+```
+
+Your project directory should then look like this:
 
 ```bash
 # Your Hugo project directory
-├── layouts
-|   ├── partials   # 1.
-|   |   └── bibliography
-|   |       ├── apa-style.html
-|   |       └── bibliography-list.html
-|   └── shortcodes # 2.
-|       ├── bibliography.html
-|       └── cite.html
-└── static         # 3.
-    └── hugo-cite.css
+├── config.yml
+└── themes
+    └── hugo-cite
 ```
 
-Reference the CSS in your HTML:
+Edit the `theme` parameter in your Hugo config file and add `hugo-cite` after your theme.
+
+```yaml
+# config.yml
+theme:
+- <your-theme>
+- hugo-cite
+```
+
+Reference the CSS somewhere in your HTML templates:
 
 ```html
 <link rel="stylesheet" type="text/css" href="{{ "/hugo-cite.css" | relURL }}" />
 ```
-
-If you plan to use Hugo Cite in another language than English, copy the `i18n/` files:
-
-```bash
-# Your Hugo project directory
-└── i18n         # 4.
-    ├── en.yaml
-    └── fr.yaml
-```
-
-If a language does not exist, use the `i18n/en.yaml` as a base template and create a new file with the matching language code.
 
 ## Usage
 
