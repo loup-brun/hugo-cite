@@ -83,7 +83,7 @@
 
       {{- if not $currentRef.author -}}
       <span rel="noauthor">
-        {{ i18n "apa_no_author_abbr" | default "n.a." | upper }}
+        {{- i18n "apa_no_author_abbr" | default "n.a." | upper -}}
       </span>
       {{- else -}}
       {{- range first 1 $currentRef.author }}
@@ -100,23 +100,17 @@
       {{ if gt (len $currentRef.author) 1 }}
       <em>&amp; al.</em>
       {{- end -}}
-      {{- end }}
-      {{ if and (isset $currentRef "issued") (isset $currentRef.issued "date-parts") }}
-      {{/* range of dates */}}
+      {{- end -}}
+      {{- if and (isset $currentRef "issued") (isset $currentRef.issued "date-parts") -}}
+      {{- range $index, $dateParts := (index .issued "date-parts") -}}{{/* range of dates */}}
+      {{- range first 1 $dateParts -}}{{/* First element in date-part is the year */}},&#32;
       <span itemprop="datePublished">
-      {{- range $index, $dateParts := (index .issued "date-parts") -}}
-      {{/* Separate other years by comma */}}
-      {{- if gt $index 0 -}}, {{ end -}}
-      {{/* First element in date-part is the year */}}
-      {{- range first 1 $dateParts -}}
-      {{- . -}}
-      {{- end -}}
-      {{- end -}}
+        {{- . -}}
       </span>
       {{- end -}}
-      {{- with $pages -}}
-      , pp.&nbsp;{{ . }}
       {{- end -}}
+      {{- end -}}
+      {{- with $pages -}},&#32;pp.&nbsp;{{ . }}{{- end -}}
     </a>)
     <span class="hugo-cite-citation">{{ partial $partialPath $currentRef }}</span></span>
 
