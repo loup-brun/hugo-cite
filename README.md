@@ -32,7 +32,7 @@ Your project directory should then look like this:
     └── hugo-cite
 ```
 
-## 2. Configure
+### 2. Configure
 
 Edit the `theme` parameter in your Hugo config file and add `hugo-cite` after your theme.
 
