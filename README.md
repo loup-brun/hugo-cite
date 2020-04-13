@@ -1,6 +1,7 @@
 # Hugo Cite
 
-📝 Easily manage your bibliography and in-text citations with [Hugo](https://gohugo.io), the popular static-site generator.
+📝 Easily manage your bibliography and in-text citations with [Hugo](https://gohugo.io), the popular static-site generator.  
+[**Documentation site + demo &rarr;**](https://labs.loupbrun.ca/hugo-cite/)
 
 ---
 
