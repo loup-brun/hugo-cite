@@ -87,12 +87,12 @@ There are two shortcodes you can use in your content:
 
 #### Basic Example
 
-By default, the `{{</* bibliography */>}}` shortcode will render all entries from a `bib.json` included in a [leaf bundle](https://gohugo.io/content-management/page-bundles/#leaf-bundles). 
+By default, the `{{< bibliography >}}` shortcode will render all entries from a `bib.json` included in a [leaf bundle](https://gohugo.io/content-management/page-bundles/#leaf-bundles). 
 
 ```markdown
 <!-- Markdown -->
 
-{{</* bibliography */>}}
+{{< bibliography >}}
 ```
 
 #### Cited Works
@@ -102,7 +102,7 @@ You can restrict the list only to works cited on the page (with the use of in-te
 ```markdown
 <!-- Markdown -->
 
-{{</* bibliography cited */>}}
+{{< bibliography cited >}}
 ```
 
 #### File Defined in Front Matter
@@ -119,7 +119,7 @@ bibFile: path/to/bib.json # path relative to project root
 ## Bibliography
 
 <!-- The bibliography will display works from path/to/bib.json -->
-{{</* bibliography */>}}
+{{< bibliography >}}
 ```
 
 #### File Defined in Shortcode
@@ -129,7 +129,7 @@ Alternatively, you can specify the path to the CSL-JSON file at the shortcode le
 ```markdown
 <!-- Markdown -->
 
-{{</* bibliography "path/to/bib.json" */>}}
+{{< bibliography "path/to/bib.json" >}}
 ```
 
 #### Combine Options
@@ -139,7 +139,7 @@ You can also **combine both options** (the path to the JSON file must come first
 ```markdown
 <!-- Markdown -->
 
-{{</* bibliography "path/to/bib.json" cited */>}}
+{{< bibliography "path/to/bib.json" cited >}}
 ```
 
 **Note**: if you are working with a `cited` bibliography, you’ll have to specify the path to the JSON file in the front matter for in-text citations to access the same file.
@@ -151,7 +151,7 @@ You can chose to use **named params** for clarity (the order does not matter her
 ```markdown
 <!-- Markdown -->
 
-{{</* bibliography src="path/to/bib.json" cited="true" */>}}
+{{< bibliography src="path/to/bib.json" cited="true" >}}
 ```
 
 #### File From a URL
@@ -162,7 +162,7 @@ Thanks to Hugo’s [`getJSON`](https://gohugo.io/templates/data-templates/#data-
 ```markdown
 <!-- Markdown -->
 
-{{</* bibliography "http://example.com/my/bib.json" */>}}
+{{< bibliography "http://example.com/my/bib.json" >}}
 ```
 
 ### Render in-text citations
