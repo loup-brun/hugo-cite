@@ -13,6 +13,8 @@ More styles may be added eventually (contributions welcome!), but given that the
 
 ## Install
 
+### 1. Download
+
 Download Hugo Cite in the `themes/hugo-cite` directory, either by [cloning with Git](https://github.com/loup-brun/hugo-cite) (the preferred method) or by [downloading as a ZIP file](https://github.com/alex-shpak/hugo-book/archive/master.zip).
 
 The Git way:
@@ -30,6 +32,8 @@ Your project directory should then look like this:
     └── hugo-cite
 ```
 
+## 2. Configure
+
 Edit the `theme` parameter in your Hugo config file and add `hugo-cite` after your theme.
 
 ```yaml
@@ -38,6 +42,8 @@ theme:
 - <your-theme>
 - hugo-cite
 ```
+
+### 3. Add CSS
 
 Reference the CSS somewhere in your HTML templates:
 
