@@ -1,6 +1,9 @@
 # APA Style Localization
 # FR
 
+apa_in:
+  other: "Dans"
+
 apa_no_author_abbr:
   other: "s.a."
 

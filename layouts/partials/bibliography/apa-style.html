@@ -176,7 +176,7 @@
   {{- end -}}
 
   {{- if isset . "container-title" -}}
-  &#32;In
+  &#32;{{ i18n "apa_in" | default "In" }}
   {{ if .editor }}
   {{- template "editorPart" . }} (Eds.),&#32;
   {{- end -}}
