@@ -11,10 +11,6 @@ More styles may be added eventually (contributions welcome!), but given that the
 
 ---
 
-Screenshot:
-
-![Screenshot](https://user-images.githubusercontent.com/9596476/79055177-eddd8b00-7c18-11ea-8fe8-bad1bd8b2297.jpg)
-
 ## Install
 
 1. Copy the partials in `layouts/partials/bibliography/` (make sure to mirror the same directory structure).
@@ -202,6 +198,12 @@ He is a programmer. {{< cite "Lessig 2002" >}}
 <!-- Include the list of cited works on the page -->
 {{< bibliography cited >}}
 ```
+
+## Demo
+
+[![Screenshot featuring Hugo Cite](https://user-images.githubusercontent.com/9596476/79129813-d9fa6c00-7d73-11ea-98e6-4ec316a22c78.jpg)](https://labs.loupbrun.ca/hugo-cite/demo/)
+
+View a working [online demo](https://labs.loupbrun.ca/hugo-cite/demo/).
 
 ## License
 
