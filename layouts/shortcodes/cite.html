@@ -82,7 +82,9 @@
       {{- $reference := . -}}
 
       {{- if not $currentRef.author -}}
-      <span rel="noauthor">S. A.</span>
+      <span rel="noauthor">
+        {{ i18n "apa_no_author_abbr" | default "n.a." | upper }}
+      </span>
       {{- else -}}
       {{- range first 1 $currentRef.author }}
       {{- $author := . -}}

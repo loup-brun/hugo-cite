@@ -36,6 +36,8 @@
   {{ end -}}
   {{ if eq $totalAuthors (add $authorIndex 2) -}}&#32;&amp;&#32;{{ end -}}{{/* Last name has ampersand */}}
   {{- end -}}
+  {{- else -}}{{/* Fallback if no authors are specified */}}
+  ({{- i18n "apa_no_author_abbr" | default "n.a." | upper -}}).
   {{- end -}}
 {{- end -}}{{/* END author */}}
 
@@ -77,7 +79,7 @@
     {{- end -}}
     </span>)
   {{- else }}
-  (n.d.){{/* no date */}}
+  ({{ i18n "apa_no_date_abbr" | default "n.d." }}){{/* no date */}}
   {{- end }}
 {{- end }}{{/* END issued */}}
 
@@ -107,7 +109,7 @@
      itemprop="identifier"
      itemtype="https://schema.org/URL">https://doi.org/{{- .DOI -}}</a>
   {{- else if .URL }}&#32;
-  Retrieved from
+  {{ i18n "apa_retrieved_from" | default "Retrieved from" }}
   <a href="{{ .URL }}"
      itemprop="identifier"
      itemtype="https://schema.org/URL">{{ .URL }}</a>
@@ -245,11 +247,15 @@
 
 {{/* -------------------- BEGIN WEBPAGE TYPE -------------------- */}}
 {{- else if eq .type "webpage" -}}
-{{ template "authorPart" .}}
-{{ template "issuedFullPart" . }}.
-{{- if .URL -}}&#32;
-Retrieved from <a href="{{ .URL }}">{{ .URL }}</a>
-{{- end }}
+<span itemscope
+      itemtype="https://schema.org/WebPage"
+      data-type="webpage">
+  {{- template "authorPart" . -}}
+
+  {{- template "issuedFullPart" . -}}.
+
+  {{- template "DOIPart" . -}}
+</span>
 {{/* -------------------- END WEBPAGE TYPE -------------------- */}}
 
 {{/* -------------------- BEGIN DEFAULT APA -------------------- */}}

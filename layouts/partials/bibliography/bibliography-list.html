@@ -49,8 +49,8 @@
           */}}
 
           {{ $authors := .author }}
-          {{- if not $authors -}}
-          (N.A.){{/* Fallback if no authors are specified */}}
+          {{- if not $authors -}}{{/* Fallback if no authors are specified */}}
+          ({{- i18n "apa_no_author_abbr" | default "n.a." | upper -}})
           {{- else -}}
 
           {{- $totalAuthors := len $authors -}}
@@ -72,8 +72,8 @@
           {{- if gt $index 0 -}},&#32;{{ end -}}
           {{- range first 1 $dateParts -}}{{- . -}}{{- end -}}
           {{- end -}}
-          {{- else -}}
-          <i>n.d.</i>{{/* Fallback if no date */}}
+          {{- else -}}{{/* Fallback if no date */}}
+          {{- i18n "apa_no_date_abbr" | default "n.d." -}}
           {{- end -}}){{/* End Issued */}}</dt>
 
         <dd>

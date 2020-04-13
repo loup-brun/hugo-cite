@@ -18,8 +18,9 @@ Screenshot:
 1. Copy the partials in `layouts/partials/bibliography/` (make sure to mirror the same directory structure).
 2. Copy the shortcodes in `layouts/shortcodes/`.
 3. Copy the CSS in your `static/` directory and reference it in your HTML.
+4. (Optional) To modify the particles or to use Hugo Cite in another language than English, copy the contents of `i18n/`.
 
-```
+```bash
 # Your Hugo project directory
 ├── layouts
 |   ├── partials   # 1.
@@ -39,6 +40,17 @@ Reference the CSS in your HTML:
 <link rel="stylesheet" type="text/css" href="{{ "/hugo-cite.css" | relURL }}" />
 ```
 
+If you plan to use Hugo Cite in another language than English, copy the `i18n/` files:
+
+```bash
+# Your Hugo project directory
+└── i18n         # 4.
+    ├── en.yaml
+    └── fr.yaml
+```
+
+If a language does not exist, use the `i18n/en.yaml` as a base template and create a new file with the new language code.
+
 ## Usage
 
 You must first provide a **[CSL-JSON](https://citeproc-js.readthedocs.io/en/latest/csl-json/markup.html) bibliography file**.
@@ -48,7 +60,7 @@ Just include `bib` in the filename (such as `bibliography.json`,`oh-my-bib.json`
 
 Here is an example:
 
-```
+```bash
 # Your Hugo project directory
 ├── content
 |   ├── article1

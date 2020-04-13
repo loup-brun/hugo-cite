@@ -1,0 +1,11 @@
+# APA Style Localization
+# FR
+
+apa_no_author_abbr:
+  other: "s.a."
+
+apa_no_date_abbr:
+  other: "s.d."
+
+apa_retrieved_from:
+  other: "Consulté à l'adresse"

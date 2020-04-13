@@ -1,0 +1,11 @@
+# APA Style Localization
+# EN
+
+apa_no_author_abbr:
+  other: "n.a."
+
+apa_no_date_abbr:
+  other: "n.d."
+
+apa_retrieved_from:
+  other: "Retrieved from"
