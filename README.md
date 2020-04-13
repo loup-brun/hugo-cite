@@ -87,22 +87,12 @@ There are two shortcodes you can use in your content:
 
 #### Basic Example
 
-By default, the `{{< bibliography >}}` shortcode will render all entries from a `bib.json` included in a [leaf bundle](https://gohugo.io/content-management/page-bundles/#leaf-bundles). 
+By default, the `{{</* bibliography */>}}` shortcode will render all entries from a `bib.json` included in a [leaf bundle](https://gohugo.io/content-management/page-bundles/#leaf-bundles). 
 
 ```markdown
 <!-- Markdown -->
 
-{{< bibliography >}}
-```
-
-#### Specify a Path to the JSON File
-
-Alternatively, you can specify the path to a JSON file located *inside* the Hugo project directory:
-
-```markdown
-<!-- Markdown -->
-
-{{< bibliography "path/to/bib.json" >}}
+{{</* bibliography */>}}
 ```
 
 #### Cited Works
@@ -112,32 +102,13 @@ You can restrict the list only to works cited on the page (with the use of in-te
 ```markdown
 <!-- Markdown -->
 
-{{< bibliography cited >}}
+{{</* bibliography cited */>}}
 ```
 
-#### Combine Options
+#### File Defined in Front Matter
 
-You can also **combine both options** (the path to the JSON file must come first):
-
-```markdown
-<!-- Markdown -->
-
-{{< bibliography "path/to/bib.json" cited >}}
-```
-
-#### Named Params
-
-You can chose to use **named params** for clarity (the order does not matter here):
-
-```markdown
-<!-- Markdown -->
-
-{{< bibliography src="path/to/bib.json" cited="true" >}}
-```
-
-#### Front Matter
-
-Instead of specifying the custom path inside your shortcode, you can specify it in the content page’s **front matter** (this is especially uesful when you want to restrict to cited entries):
+You can specify the path to a JSON file located *inside* the Hugo project directory in the content page’s **front matter** using the `bibFile` parameter.
+This is especially useful when working with `cited` entries:
 
 ```markdown
 ---
@@ -148,18 +119,50 @@ bibFile: path/to/bib.json # path relative to project root
 ## Bibliography
 
 <!-- The bibliography will display works from path/to/bib.json -->
-{{< bibliography >}}
+{{</* bibliography */>}}
+```
+
+#### File Defined in Shortcode
+
+Alternatively, you can specify the path to the CSL-JSON file at the shortcode level:
+
+```markdown
+<!-- Markdown -->
+
+{{</* bibliography "path/to/bib.json" */>}}
+```
+
+#### Combine Options
+
+You can also **combine both options** (the path to the JSON file must come first):
+
+```markdown
+<!-- Markdown -->
+
+{{</* bibliography "path/to/bib.json" cited */>}}
+```
+
+**Note**: if you are working with a `cited` bibliography, you’ll have to specify the path to the JSON file in the front matter for in-text citations to access the same file.
+
+#### Named Params
+
+You can chose to use **named params** for clarity (the order does not matter here):
+
+```markdown
+<!-- Markdown -->
+
+{{</* bibliography src="path/to/bib.json" cited="true" */>}}
 ```
 
 #### File From a URL
 
-Thanks to Hugo’s `getJSON` function, you can also provide a **URL**.  
+Thanks to Hugo’s [`getJSON`](https://gohugo.io/templates/data-templates/#data-driven-content) function, the path can also be a **URL**.  
 *Note however that this method may have some drawbacks if you are [reloading often](https://gohugo.io/templates/data-templates/#livereload-with-data-files), see the Hugo docs regarding potential issues.*
 
 ```markdown
 <!-- Markdown -->
 
-{{< bibliography "https://example.com/my/bib.json" >}}
+{{</* bibliography "http://example.com/my/bib.json" */>}}
 ```
 
 ### Render in-text citations
