@@ -201,9 +201,9 @@ He is a programmer. {{< cite "Lessig 2002" >}}
 
 ## Demo
 
-[![Screenshot featuring Hugo Cite](https://user-images.githubusercontent.com/9596476/79129813-d9fa6c00-7d73-11ea-98e6-4ec316a22c78.jpg)](https://labs.loupbrun.ca/hugo-cite/demo/)
-
 View a working [online demo](https://labs.loupbrun.ca/hugo-cite/demo/).
+
+[![Screenshot featuring Hugo Cite](https://user-images.githubusercontent.com/9596476/79130193-88061600-7d74-11ea-9654-0dc8b3d5bd2d.png)](https://labs.loupbrun.ca/hugo-cite/demo/)
 
 ## License
 
