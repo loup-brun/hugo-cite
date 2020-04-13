@@ -204,7 +204,7 @@ He is a programmer. {{< cite "Lessig 2002" >}}
 
 ## Demo
 
-View a working [online demo](https://labs.loupbrun.ca/hugo-cite/demo/).
+Check out a working [online demo &rarr;](https://labs.loupbrun.ca/hugo-cite/demo/)
 
 [![Screenshot featuring Hugo Cite](https://user-images.githubusercontent.com/9596476/79130193-88061600-7d74-11ea-9654-0dc8b3d5bd2d.png)](https://labs.loupbrun.ca/hugo-cite/demo/)
 
