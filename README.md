@@ -49,7 +49,7 @@ If you plan to use Hugo Cite in another language than English, copy the `i18n/` 
     └── fr.yaml
 ```
 
-If a language does not exist, use the `i18n/en.yaml` as a base template and create a new file with the new language code.
+If a language does not exist, use the `i18n/en.yaml` as a base template and create a new file with the matching language code.
 
 ## Usage
 
