@@ -25,19 +25,24 @@
 
 */}}
 
-{{- $errorMissingValue := "1 or 2 values must be supplied with this shortcode. The first is required and should match an ID in the CSL-JSON bibliogrpahy file, the second is optional, and should be a page number or range of page numbers. Example: {{< cite &#34;Faure 1909&#34; &#34;304&#34; >}}" -}}
+{{- $errorMissingValue := "1 or 2 values must be supplied with this shortcode. You provided %d params. The first is required and should match an ID in the CSL-JSON bibliogrpahy file, the second is optional, and should be a page number or range of page numbers. Example: {{< cite \"Faure 1909\" \"304\" >}}" -}}
 
 {{- $defaultErrString := "No matching ID was found for `%s` in the references. Please make sure to provide an available ID in your `bib.json` file." -}}
 
-
 {{- if and (ne (len .Params) 1) (ne (len .Params) 2) -}}
-{{- errorf $errorMissingValue -}}
+{{- errorf $errorMissingValue (len .Params) -}}
 {{- else -}}
 {{- $id := .Get 0 -}}
 {{- $pages := .Get 1 -}}
+{{- if $pages -}}
+{{- $pages = string $pages -}}
+{{- end -}}
+{{- $formatedPages := (printf "p.&nbsp;%s" $pages) | safeHTML -}}
+  {{- if gt (findRE "-" $pages) 0 -}}{{/* If `$pages` contains a dash */}}
+  {{- $formatedPages = (printf "pp.&nbsp;%s" $pages) | safeHTML -}}
+  {{- end -}}
 
 {{/* -------------------- BEGIN Citation style -------------------- */}}
-
 {{- $citationStyle := "apa" }}
 {{- if $.Site.Params.citationStyle }}
   {{- if templates.Exists (printf "aprtials/bibliography/%s-style.html" $.Site.Params.citationStyle) }}
@@ -64,7 +69,7 @@
 {{- $bibliographyPath = $.Page.Params.bibFile -}}
 {{- end }}
 
-{{ if gt (len $bibliographyPath) 0 }}{{/* Begin Bibliography Loop */}}
+{{- if gt (len $bibliographyPath) 0 -}}{{/* Begin Bibliography Loop */}}
 {{- $bibliography := getJSON $bibliographyPath -}}
 {{/* -------------------- END Bibliography path -------------------- */}}
 
@@ -110,7 +115,7 @@
       {{- end -}}
       {{- end -}}
       {{- end -}}
-      {{- with $pages -}},&#32;pp.&nbsp;{{ . }}{{- end -}}
+      {{- with $pages -}},&#32;{{ $formatedPages }}{{- end -}}
     </a>)
     <span class="hugo-cite-citation">{{ partial $partialPath $currentRef }}</span></span>
 
