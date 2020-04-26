@@ -86,8 +86,8 @@
         itemprop="citation">(<a href="#{{- $id | urlize -}}"><span class="visually-hidden">Citation: </span>
       {{- $reference := . -}}
 
-      {{ $displayAuthors := $currentRef.author -}}
-      {{ if not $currentRef.author -}}
+      {{- $displayAuthors := $currentRef.author -}}
+      {{- if not $currentRef.author -}}
       {{- $displayAuthors = $currentRef.editor -}}
       {{- end -}}
       {{- if not $displayAuthors -}}

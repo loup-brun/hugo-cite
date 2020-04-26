@@ -48,13 +48,16 @@
             Author-date in-text citation
           */}}
 
-          {{ $authors := .author }}
-          {{- if not $authors -}}{{/* Fallback if no authors are specified */}}
+          {{- $displayAuthors := $currentRef.author -}}
+          {{- if not $currentRef.author -}}
+          {{- $displayAuthors = $currentRef.editor -}}
+          {{- end -}}
+          {{- if not $displayAuthors -}}{{/* Fallback if no authors/Eds are specified */}}
           ({{- i18n "apa_no_author_abbr" | default "n.a." | upper -}})
           {{- else -}}
 
-          {{- $totalAuthors := len $authors -}}
-          {{- range $authorIndex, $author := .author -}}{{/* BEGIN authors loop */}}
+          {{- $totalAuthors := len $displayAuthors -}}
+          {{- range $authorIndex, $author := $displayAuthors -}}{{/* BEGIN authors loop */}}
 
           {{- with $author.family -}}
           {{ . }}
