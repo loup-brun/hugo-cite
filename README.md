@@ -206,6 +206,7 @@ Using the citation key defined in the CSL-JSON, you can reference your entry in 
 Our generation has a philosopher.
 He is not an artist, or a professional writer.
 He is a programmer. {{< cite "Lessig 2002" >}}
+```
 
 #### Cite a Page
 
