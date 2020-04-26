@@ -170,7 +170,16 @@ Thanks to Hugo’s [`getJSON`](https://gohugo.io/templates/data-templates/#data-
 ### Render in-text citations
 
 Use the `{{< cite >}}` shortcode to render rich in-text citations.
-The citation key must match the `id` field of a reference in your CSL-JSON file.
+
+Example:
+
+```markdown
+<!-- Markdown -->
+
+{{< cite "Lessig 2002" >}}
+```
+
+The citation key (in the above example, `Lessig 2002`) must match the `id` field of a reference in your CSL-JSON file.
 You can make it look like an author-date format, or anything else.
 
 Here’s an excerpt of a CSL-JSON file:
@@ -197,6 +206,30 @@ Using the citation key defined in the CSL-JSON, you can reference your entry in 
 Our generation has a philosopher.
 He is not an artist, or a professional writer.
 He is a programmer. {{< cite "Lessig 2002" >}}
+
+#### Cite a Page
+
+You can also provide a **page** as the second positional parameter:
+
+```markdown
+<!-- Markdown -->
+
+{{< cite "Lessig 2002" 5 >}}
+```
+
+The example above will render `(Lessig, 2020, p. 5)` (note the `p.` was added by Hugo Cite; you need not to add it).
+
+#### Cite a Page Range
+
+You can instead specify a **range of pages** using a **dash** `-`, which will output `pp.` before the page range (ensure there is no space between the page numbers):
+
+```markdown
+<!-- Markdown -->
+
+{{< cite "Lessig 2002" 5-6 >}}
+```
+
+The example above will render `(Lessig, 2020, pp. 5-6)`.
 
 ## Cited Works
 
