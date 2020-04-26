@@ -86,12 +86,16 @@
         itemprop="citation">(<a href="#{{- $id | urlize -}}"><span class="visually-hidden">Citation: </span>
       {{- $reference := . -}}
 
-      {{- if not $currentRef.author -}}
+      {{ $displayAuthors := $currentRef.author -}}
+      {{ if not $currentRef.author -}}
+      {{- $displayAuthors = $currentRef.editor -}}
+      {{- end -}}
+      {{- if not $displayAuthors -}}
       <span rel="noauthor">
         {{- i18n "apa_no_author_abbr" | default "n.a." | upper -}}
       </span>
       {{- else -}}
-      {{- range first 1 $currentRef.author }}
+      {{- range first 1 $displayAuthors }}
       {{- $author := . -}}
       <span itemprop="author" itemscope itemtype="https://schema.org/Person">
         {{- with $author.given -}}
@@ -102,7 +106,7 @@
         {{- end -}}
       </span>
       {{- end -}}
-      {{ if gt (len $currentRef.author) 1 }}
+      {{ if gt (len $displayAuthors) 1 }}
       <em>&amp; al.</em>
       {{- end -}}
       {{- end -}}

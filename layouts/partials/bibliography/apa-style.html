@@ -124,8 +124,9 @@
       data-type="book">
   {{- if .author -}}
   {{- template "authorPart" . -}}
+  &#32;
   {{- else if .editor -}}{{/* Display editors if no authors*/}}
-  {{- template "editorPart" -}}
+  {{- template "editorPart" . -}}
   &#32;
   {{- end -}}
   {{- template "issuedPart" . }}.
