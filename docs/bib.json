@@ -1,0 +1,780 @@
+[
+  {
+    "id": "Goody1978",
+    "type": "book",
+    "event-place": "Paris, France",
+    "ISBN": "978-2-7073-0240-3",
+    "language": "français",
+    "publisher": "Éditions de Minuit",
+    "publisher-place": "Paris, France",
+    "title": "La raison graphique: la domestication de la pensée sauvage",
+    "title-short": "La raison graphique",
+    "author": [
+      {
+        "family": "Goody",
+        "given": "Jack"
+      }
+    ],
+    "translator": [
+      {
+        "family": "Bazin",
+        "given": "Jean"
+      },
+      {
+        "family": "Bensa",
+        "given": "Alban"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "1978"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "JaussStarobinski1978",
+    "type": "book",
+    "event-place": "Paris, France",
+    "ISBN": "978-2-07-029951-5",
+    "language": "français",
+    "publisher": "Gallimard, impr. 1978",
+    "publisher-place": "Paris, France",
+    "title": "Pour une esthétique de la réception",
+    "author": [
+      {
+        "family": "Jauss",
+        "given": "Hans Robert"
+      },
+      {
+        "family": "Starobinski",
+        "given": "Jean"
+      }
+    ],
+    "translator": [
+      {
+        "family": "Maillard",
+        "given": "Claude"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "1978"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "VitaliRosati2016",
+    "type": "article-journal",
+    "container-title": "Sens Public",
+    "ISSN": "2104-3272",
+    "language": "fr",
+    "title": "Qu'est-ce que l'éditorialisation ?",
+    "URL": "http://sens-public.org/article1184.html",
+    "author": [
+      {
+        "family": "Vitali Rosati",
+        "given": "Marcello"
+      }
+    ],
+    "accessed": {
+      "date-parts": [
+        [
+          "2018",
+          10,
+          6
+        ]
+      ]
+    },
+    "issued": {
+      "date-parts": [
+        [
+          "2016",
+          3
+        ]
+      ]
+    }
+  },
+  {
+    "id": "PedauqueLund2007",
+    "type": "book",
+    "event-place": "Toulouse, France",
+    "ISBN": "978-2-85428-728-8",
+    "language": "français, anglais",
+    "publisher": "Cépaduès éditions",
+    "publisher-place": "Toulouse, France",
+    "title": "La redocumentarisation du monde",
+    "author": [
+      {
+        "family": "Pédauque",
+        "given": "Roger T."
+      },
+      {
+        "family": "Lund",
+        "given": "Niels Windfeld"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2007"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Glushko2013",
+    "type": "book",
+    "event-place": "Cambridge (Mass.), Etats-Unis d'Amérique, Royaume-Uni de Grande-Bretagne et d'Irlande du Nord",
+    "ISBN": "978-0-262-51850-5",
+    "language": "anglais",
+    "publisher-place": "Cambridge (Mass.), Etats-Unis d'Amérique, Royaume-Uni de Grande-Bretagne et d'Irlande du Nord",
+    "title": "The discipline of organizing",
+    "author": [
+      {
+        "family": "Glushko",
+        "given": "Robert J."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2013"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Veron1985",
+    "type": "book",
+    "title": "L'analyse du « contrat de lecture » : une nouvelle méthode pour les études de positionnement des supports presse",
+    "author": [
+      {
+        "family": "Veron",
+        "given": "Eliseo"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "1985"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "BelisleDucharme2003",
+    "type": "article-journal",
+    "container-title": "Bulletin des bibliothèques de France",
+    "issue": "3",
+    "page": "74–76",
+    "title": "Contrats de lecture : ue expérience de prêt de livres électroniques en bibliothèque",
+    "volume": "48",
+    "author": [
+      {
+        "family": "Bélisle",
+        "given": "Claire"
+      },
+      {
+        "family": "Ducharme",
+        "given": "Christian"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2003"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "JacobWieviorka2012",
+    "type": "book",
+    "event-place": "Villeurbanne, France",
+    "ISBN": "978-2-910227-96-8",
+    "language": "français",
+    "publisher": "Presses de l'enssib",
+    "publisher-place": "Villeurbanne, France",
+    "title": "Imaginaires des bibliothèques",
+    "author": [
+      {
+        "family": "Jacob",
+        "given": "Christian"
+      },
+      {
+        "family": "Wieviorka",
+        "given": "Annette"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2012"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Dacos2009",
+    "type": "book",
+    "event-place": "Marseille, France",
+    "ISBN": "978-2-7466-1240-2",
+    "language": "français",
+    "publisher": "Centre pour l'édition électronique ouverte",
+    "publisher-place": "Marseille, France",
+    "title": "Read-write book: le livre inscriptible",
+    "title-short": "Read-write book",
+    "author": [
+      {
+        "family": "Dacos",
+        "given": "Marin"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2009"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Genette1982",
+    "type": "book",
+    "abstract": "Gérard Genette explore le champ littéraire des oeuvres dérivées d'une oeuvre antérieure, souvent méconnue, créee par transformation ou imitation.",
+    "event-place": "Paris, France",
+    "ISBN": "978-2-02-018905-7",
+    "language": "français",
+    "publisher": "Éditions du Seuil",
+    "publisher-place": "Paris, France",
+    "title": "Palimpsestes: la littérature au second degré",
+    "title-short": "Palimpsestes",
+    "author": [
+      {
+        "family": "Genette",
+        "given": "Gérard"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "1982"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Lagnel2017",
+    "type": "book",
+    "event-place": "Malakoff",
+    "ISBN": "978-2-10-073881-6",
+    "language": "fre",
+    "publisher": "Dunod",
+    "publisher-place": "Malakoff",
+    "title": "Manuel de datavisualisation",
+    "author": [
+      {
+        "family": "Lagnel",
+        "given": "Jean-Marie"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2017"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Salaun2012",
+    "type": "book",
+    "abstract": "La 4e de couverture indique : \"Ce livre propose d'observer le Web sous un angle inédit, en le plaçant comme un moment d'une histoire longue et méconnue, celle du document. Inventé par Tim Berners-Lee, le Web prend la suite des efforts d'indexation systématique lancés à la fin du XIXe siècle, modifiant le document lui-même dans ses trois dimensions : la forme, le contenu et la fonction de transmission. Le Web est alors un média comme un autre, s'inspirant de la bibliothèque et de la radiotélévision pour répondre aux aspirations documentaires d'une société qui a changé en profondeur. Les anciens médias eux-mêmes élargissent leur vocation en devenant des \" industries de la mémoire \", par l'archivage numérique continu et public de leur production. Les nouveaux venus, comme Apple. Google ou Facebook, privilégient chacun une dimension différente du document pour prendre une position dominante dans la construction d'un \" néodocument \". Puisant ses références dans différentes disciplines et s'appuyant sur le travail d'un réseau de chercheurs francophones sur le document numérique, ce livre ouvre plus largement les possibilités d'interprétation du Web et propose à ses acteurs indépendants de devenir des \" architectes de l'information \" pour contrer l'hégémonie menaçante des géants de la Toile.\"",
+    "event-place": "Paris, France",
+    "ISBN": "978-2-7071-7135-1",
+    "language": "français",
+    "publisher": "La Découverte, impr. 2012",
+    "publisher-place": "Paris, France",
+    "title": "Vu, lu, su: les architectes de l'information face à l'oligopole du Web",
+    "title-short": "Vu, lu, su",
+    "author": [
+      {
+        "family": "Salaün",
+        "given": "Jean-Michel"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2012"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Tangaro2017",
+    "type": "book",
+    "abstract": "Après des études de philosophie, et une expérience professionnelle dans l’édition, Bianca Tangaro s’est spécialisée en 2017 dans l’édition numérique en suivant le Master PUN de l’Enssib. Elle rédige actuellement un mémoire sur le livre numérique comme défi technique, commercial et culturel pour les éditeurs indépendants. À quoi pense-t-on quand on nous dit le mot « livre » ? … Continuer la lecture de De la page au flux : la conception du livre numérique →",
+    "language": "fr-FR",
+    "title": "De la page au flux : la conception du livre numérique",
+    "title-short": "De la page au flux",
+    "URL": "https://dlis.hypotheses.org/1255",
+    "author": [
+      {
+        "family": "Tangaro",
+        "given": "Bianca"
+      }
+    ],
+    "accessed": {
+      "date-parts": [
+        [
+          "2018",
+          10,
+          13
+        ]
+      ]
+    },
+    "issued": {
+      "date-parts": [
+        [
+          "2017"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Doueihi2011",
+    "type": "book",
+    "event-place": "Paris, France",
+    "ISBN": "978-2-02-100089-4",
+    "language": "français",
+    "publisher": "Éditions du Seuil",
+    "publisher-place": "Paris, France",
+    "title": "Pour un humanisme numérique",
+    "author": [
+      {
+        "family": "Doueihi",
+        "given": "Milad"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2011"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Muller2017",
+    "type": "book",
+    "abstract": "En entrant dans l’ère du numérique, le document a connu un grand nombre de mutations qui se sont traduites au cours de ces trente dernières années par une transformation de son rapport à la technique, l’apparition d’enjeux de société inédits et l’explosion de nouveaux métiers sur le marché de l’emploi. En passant d’une logique de stock à … Continuer la lecture de Qu’est-ce qu’un document numérique au 21è siècle ? Exercice de repérages →",
+    "language": "fr-FR",
+    "title": "Qu’est-ce qu’un document numérique au 21e siècle ? Exercice de repérages",
+    "title-short": "Qu’est-ce qu’un document numérique au 21è siècle ?",
+    "URL": "https://dlis.hypotheses.org/1429",
+    "author": [
+      {
+        "family": "Muller",
+        "given": "Catherine"
+      }
+    ],
+    "accessed": {
+      "date-parts": [
+        [
+          "2018",
+          10,
+          13
+        ]
+      ]
+    },
+    "issued": {
+      "date-parts": [
+        [
+          "2017"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Barthes1957",
+    "type": "book",
+    "event-place": "Paris, France",
+    "ISBN": "978-2-02-002582-9",
+    "language": "français",
+    "publisher": "Éditions du Seuil",
+    "publisher-place": "Paris, France",
+    "title": "Mythologies",
+    "author": [
+      {
+        "family": "Barthes",
+        "given": "Roland"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "1957"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Otlet1934",
+    "type": "book",
+    "event-place": "Bruxelles, Belgique",
+    "language": "français",
+    "publisher": "Palais mondial",
+    "publisher-place": "Bruxelles, Belgique",
+    "title": "Traité de documentation. Le livre sur le livre, théorie et pratique",
+    "author": [
+      {
+        "family": "Otlet",
+        "given": "Paul"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "1934"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Lacroix",
+    "type": "book",
+    "abstract": "La période contemporaine ressemble à bien des égards au 18e siècle. On peut croire ou souhaiter qu'advienne un mouvement mondial comparable à ce que furent les Lumières en Europe. Des Lumières numériques sont un axe d'inspiration que l'Europe pourrait adopter pour offrir le meilleur d'elle-même au monde en devenir. Cet entretien avec Roger Chartier, historien spécialiste de l'écrit aux 16e-18e siècles, mené en compagnie du prospectiviste Thierry Gaudin, présente un caractère insolite et exceptionnel.",
+    "language": "fr-FR",
+    "title": "La légende noire du monde électronique",
+    "URL": "http://reseaux.blog.lemonde.fr/2013/03/24/legende-noire-monde-electronique/",
+    "author": [
+      {
+        "family": "Lacroix",
+        "given": "Dominique"
+      }
+    ],
+    "accessed": {
+      "date-parts": [
+        [
+          "2018",
+          10,
+          13
+        ]
+      ]
+    }
+  },
+  {
+    "id": "ChartierLebrun1997",
+    "type": "book",
+    "event-place": "Paris, France",
+    "ISBN": "978-2-909317-34-2",
+    "language": "français",
+    "publisher": "Textuel",
+    "publisher-place": "Paris, France",
+    "title": "Le livre en révolutions: entretiens avec Jean Lebrun",
+    "title-short": "Le livre en révolutions",
+    "author": [
+      {
+        "family": "Chartier",
+        "given": "Roger"
+      },
+      {
+        "family": "Lebrun",
+        "given": "Jean"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "1997"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "SlavicAkdagSalahDavies2013",
+    "type": "book",
+    "event-place": "Würzburg, Allemagne",
+    "ISBN": "978-3-95650-007-7",
+    "language": "anglais",
+    "publisher": "Ergon",
+    "publisher-place": "Würzburg, Allemagne",
+    "title": "Classification & visualization: interfaces to knowledge : proceedings of the International UDC Seminar 24-25 October 2013, The Hague, The Netherlands, organized by UDC Consortium, The Hague",
+    "title-short": "Classification & visualization",
+    "author": [
+      {
+        "family": "Slavic",
+        "given": "Aida"
+      },
+      {
+        "family": "Akdag Salah",
+        "given": "Almila"
+      },
+      {
+        "family": "Davies",
+        "given": "Sylvie"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2013"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "EpronVitaliRosati2018",
+    "type": "book",
+    "publisher": "La Découverte",
+    "title": "L'édition à l'ère numérique",
+    "author": [
+      {
+        "family": "Epron",
+        "given": "Benoît"
+      },
+      {
+        "family": "Vitali-Rosati",
+        "given": "Marcello"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2018"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Tadier2018",
+    "type": "thesis",
+    "event-place": "France",
+    "genre": "Thèse de doctorat",
+    "language": "français",
+    "publisher": "Sorbonne Université",
+    "publisher-place": "France",
+    "title": "Les corps du livre, du codex au numérique. Enjeux des corporéités d'une forme médiatique: vers une anthropologie communicationnelle du livre",
+    "title-short": "Les corps du livre, du codex au numérique. Enjeux des corporéités d'une forme médiatique",
+    "author": [
+      {
+        "family": "Tadier",
+        "given": "Elsa"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2018"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Masure2017",
+    "type": "book",
+    "abstract": "En quoi les environnements numériques contemporains actualisent-ils les modes de production et de transmission des savoirs ? Quelle est la place des designers dans des projets relevant des sciences humaines et sociales ? En étudiant des opérations et des systèmes techniques potentiellement ouverts à la recherche, cet essai interroge le rapport du design aux humanités numériques. ­Electre 2018",
+    "event-place": "Paris, France",
+    "ISBN": "978-2-917855-72-0",
+    "language": "français",
+    "publisher": "Éditions B42",
+    "publisher-place": "Paris, France",
+    "title": "Design et humanités numériques",
+    "author": [
+      {
+        "family": "Masure",
+        "given": "Anthony"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2017"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Foucault1969",
+    "type": "book",
+    "event-place": "Paris, France",
+    "ISBN": "978-2-07-026999-0",
+    "language": "français",
+    "publisher": "Gallimard",
+    "publisher-place": "Paris, France",
+    "title": "L'archéologie du savoir",
+    "author": [
+      {
+        "family": "Foucault",
+        "given": "Michel"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "1969"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Souchier1996",
+    "type": "article-journal",
+    "abstract": "L'objectif de cet article n'est pas de proposer une nouvelle théorie susceptible de changer radicalement notre point de vue sur l'analyse de l'écriture1, mais bien de poser un certain nombre d'interrogations à propos de l'introduction de l'écran et des nouvelles technologies dans l'univers de l'écrit. Au fond, comment une analyse de l'écrit peut- elle aujourd'hui s'inscrire dans l'arrière plan historique et culturel de l'écriture, dans une sémiologie «infra-ordinaire», tout en observant ce qui bouge dans les pratiques en fonction de la matérialité, de la technologie et des données socio-économiques.",
+    "container-title": "Communication & Langages",
+    "DOI": "10.3406/colan.1996.2662",
+    "issue": "1",
+    "language": "fre",
+    "page": "105–119",
+    "title": "L'écrit d'écran, pratiques d'écriture & informatique",
+    "URL": "https://www.persee.fr/doc/colan_0336-1500_1996_num_107_1_2662",
+    "volume": "107",
+    "author": [
+      {
+        "family": "Souchier",
+        "given": "Emmanuël"
+      }
+    ],
+    "accessed": {
+      "date-parts": [
+        [
+          "2019",
+          4,
+          19
+        ]
+      ]
+    },
+    "issued": {
+      "date-parts": [
+        [
+          "1996"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Girard2014",
+    "type": "article-journal",
+    "abstract": "Contenu web et livre sont souvent opposés l’un à l’autre comme deux formes de discours s’excluant mutuellement. Le livre comme ordre de discours ne peut-il cependant s’intégrer au réseau sans s’y dissoudre ? Nous voyons ici en suivant la trame des procédures de l’ordre du discours définis par Michel Foucault que les outils réseau sont propres non seulement à leur rendre justice mais plus encore à les raffiner. Le web n’est pas le lieu de la disparition du livre ou de quelque type de discours mais au contraire de leur spéciation la plus fine, là ou le papier les contraignait sous une appellation commune de livre dont ils n’avaient parfois que l’inévitable forme. La condition de ce raffinement du livre dans le réseau reste cependant la prise en main par les auteurs et éditeurs de ces techniques ainsi que leur implication dans la conception de ces nouveaux outils métier.",
+    "container-title": "Revue Sciences/Lettres",
+    "DOI": "10.4000/rsl.526",
+    "ISSN": "2271-6246",
+    "issue": "2",
+    "language": "fr",
+    "title": "Le réseau et ses outils comme lieu de raffinement du livre",
+    "URL": "http://journals.openedition.org/rsl/526",
+    "author": [
+      {
+        "family": "Girard",
+        "given": "Chloé"
+      }
+    ],
+    "accessed": {
+      "date-parts": [
+        [
+          "2019",
+          4,
+          19
+        ]
+      ]
+    },
+    "issued": {
+      "date-parts": [
+        [
+          "2014",
+          2
+        ]
+      ]
+    }
+  },
+  {
+    "id": "SinatraVitaliRosati2014",
+    "type": "book",
+    "collection-title": "Parcours numériques",
+    "event-place": "[Montréal]",
+    "ISBN": "978-2-7606-3202-8",
+    "publisher": "Les Presses de l'Université de Montréal",
+    "publisher-place": "Montréal",
+    "title": "Pratiques de l'édition numérique",
+    "author": [
+      {
+        "family": "Sinatra",
+        "given": "Michaël"
+      },
+      {
+        "family": "Vitali-Rosati",
+        "given": "Marcello"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2014"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Darnton2011",
+    "type": "chapter",
+    "abstract": "Un grand massacre de chats: d'après un témoin, voilà bien l'épisode le plus comique qui se soit déroulé dans l'imprimerie de Jacques Vincent, rue Saint-Séverin,...",
+    "container-title": "Le Grand Massacre des chats",
+    "event-place": "Paris",
+    "ISBN": "978-2-251-20014-9",
+    "language": "fr-FR",
+    "page": "384",
+    "publisher-place": "Paris",
+    "source": "www.lesbelleslettres.com",
+    "title": "L’arbre de la connaissance, la stratégie épistémologique de l’Encyclopédie",
+    "title-short": "Le Grand Massacre des chats",
+    "URL": "https://www.lesbelleslettres.com/livre/1425-le-grand-massacre-des-chats",
+    "author": [
+      {
+        "family": "Darnton",
+        "given": "Robert"
+      }
+    ],
+    "accessed": {
+      "date-parts": [
+        [
+          "2020",
+          1,
+          12
+        ]
+      ]
+    },
+    "issued": {
+      "date-parts": [
+        [
+          "2011",
+          5,
+          19
+        ]
+      ]
+    }
+  },
+  {
+    "id": "Bachimont2004",
+    "type": "article-journal",
+    "container-title": "Mémoire de HDR",
+    "title": "Arts et sciences du numérique: Ingénierie des connaissances et critique de la raison computationnelle",
+    "author": [
+      {
+        "family": "Bachimont",
+        "given": "Bruno"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2004"
+        ]
+      ]
+    }
+  }
+]
