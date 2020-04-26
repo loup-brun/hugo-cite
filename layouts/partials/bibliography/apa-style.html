@@ -122,8 +122,12 @@
 <span itemscope 
       itemtype="https://schema.org/Book"
       data-type="book">
-  {{ template "authorPart" . }}
+  {{- if .author -}}
+  {{- template "authorPart" . -}}
+  {{- else if .editor -}}{{/* Display editors if no authors*/}}
+  {{- template "editorPart" -}}
   &#32;
+  {{- end -}}
   {{- template "issuedPart" . }}.
   &#32;
   {{- if .title -}}
@@ -228,6 +232,11 @@
   {{- end -}}
 
   {{- if isset . "container-title" -}}
+  {{- if .editor -}}{{/* Add `In` before name of Eds. and title*/}}
+  &#32;{{- i18n "apa_in" | default "In" -}}&#32;
+  {{- template "editorPart" . }} (Eds.),&#32;
+  {{- end -}}
+
   <i>{{/* italicize journal title */}}
     <span itemprop="about">
     {{- echoParam . "container-title" -}}</span>
