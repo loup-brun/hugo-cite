@@ -234,6 +234,7 @@ The example above will render `(Lessig, 2020, pp. 5-6)`.
 
 ## Cited Works
 
+```markdown
 <!-- Include the list of cited works on the page -->
 {{< bibliography cited >}}
 ```
