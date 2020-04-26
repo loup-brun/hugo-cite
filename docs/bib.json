@@ -1,4 +1,28 @@
 [
+ {
+   "id": "vial_design_2017",
+   "abstract": "\"L’objectif de cet ouvrage est double : d’une part, repenser les enjeux, modèles et usages d’écriture, d’édition et de lecture en termes d’innovation sociale ; d’autre part, contribuer aux humanités numériques par la recherche en design et en sciences de l’information et de la communication. À partir des trois usages fondamentaux de la chaîne du livre sont présentées différentes formes d’édition de la recherche (chapitres, restitutions d’ateliers et des débats participatifs, sélection de tweets) permettant de repenser l’écriture, l’édition et la lecture à l’ère du numérique. Quels sont les mécanismes et enjeux du geste technique d’écrire? Qu’est-ce que « publier » dans une société numérique? Comment le numérique transforme-t-il l’idée et l’acte d’écrire? Dans quelle mesure les interfaces numériques refaçonnent-elles les activités d’écriture et de lecture à l’écran? Différents contenus médiatiques sont proposés au lecteur pour augmenter l’expérience de lecture de l’ouvrage.\"--Page 4 de la couverture.",
+   "call-number": "Z 286 E43 D47 2017",
+   "editor": [{
+     "family": "Vial",
+     "given": "Stéphane"
+   }, {
+     "family": "Catoir-Brisson",
+     "given": "Marie-Julie"
+   }],
+   "ISBN": "978-2-13-078883-6",
+   "issued": {
+     "date-parts": [[2017]]
+   },
+   "language": "fre",
+   "number-of-pages": "257",
+   "publisher": "PUF",
+   "publisher-place": "Paris, France",
+   "source": "atrium.umontreal.ca",
+   "title": "Design et innovation dans la chaîne du livre: écrire, éditer, lire à l'ère numérique",
+   "title-short": "Design et innovation dans la chaîne du livre",
+   "type": "book"
+ },
   {
     "id": "Goody1978",
     "type": "book",
