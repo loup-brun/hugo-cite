@@ -6,7 +6,7 @@ Documentation for the Hugo Cite project.
 
 The documentation is built with (of course) [Hugo](https://gohugo.io).
 
-Here a few commands wrapped around Hugo
+Here a few commands wrapped around Hugo:
 
 ```bash
 make serve  # http://localhost:1313/hugo-cite/
