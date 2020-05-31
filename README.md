@@ -6,7 +6,7 @@
 
 ---
 
-⚠️ **Important note: APA is the only style currently available, and you must be aware that it does not match the entire APA spec.**  
+⚠️ **Important note: APA is the only citation style currently available, and you must be aware that it does not match the entire APA spec.**  
 More styles may be added eventually (contributions welcome!), but given that they are extremely verbose to implement, this is unlikely to happen in a near future.
 
 ---
@@ -63,16 +63,16 @@ Here is an example:
 ```bash
 # Your Hugo project directory
 ├── content
-|   ├── article1
-|   |   ├── bib.json
-|   |   └── index.md
-|   ├── article2
-|   |   ├── image.jpg
-|   |   ├── index.md
-|   |   └── mr-bib.json
-|   └── article3
-|       ├── index.md
-|       └── oh-my-bib.json
+│   ├── article1
+│   │   ├── bib.json
+│   │   └── index.md
+│   ├── article2
+│   │   ├── image.jpg
+│   │   ├── index.md
+│   │   └── mr-bib.json
+│   └── article3
+│       ├── index.md
+│       └── oh-my-bib.json
 └── path
     └── to
         └── bib.json
@@ -89,7 +89,7 @@ There are two shortcodes you can use in your content:
 
 #### Basic Example
 
-By default, the `{{< bibliography >}}` shortcode will render all entries from a `bib.json` included in a [leaf bundle](https://gohugo.io/content-management/page-bundles/#leaf-bundles). 
+By default, the `{{< bibliography >}}` shortcode will render all entries from a `bib.json` included in a [leaf bundle](https://gohugo.io/content-management/page-bundles/#leaf-bundles) (see directory example above).
 
 ```markdown
 <!-- Markdown -->
