@@ -16,16 +16,16 @@ Here is an example:
 ```bash
 # Your Hugo project directory
 ├── content
-|   ├── article1
-|   |   ├── bib.json
-|   |   └── index.md
-|   ├── article2
-|   |   ├── image.jpg
-|   |   ├── index.md
-|   |   └── mr-bib.json
-|   └── article3
-|       ├── index.md
-|       └── oh-my-bib.json
+│   ├── article1
+│   │   ├── bib.json
+│   │   └── index.md
+│   ├── article2
+│   │   ├── image.jpg
+│   │   ├── index.md
+│   │   └── mr-bib.json
+│   └── article3
+│       ├── index.md
+│       └── oh-my-bib.json
 └── path
     └── to
         └── bib.json
