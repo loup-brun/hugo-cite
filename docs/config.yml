@@ -1,4 +1,4 @@
-baseURL: "https://labs.lopubrun.ca/hugo-cite/"
+baseURL: "https://labs.loupbrun.ca/hugo-cite/"
 languageCode: "en"
 title: "Hugo Cite"
 description: "Easily manage your bibliography with Hugo."
