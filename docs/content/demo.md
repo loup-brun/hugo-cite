@@ -3,6 +3,8 @@ title: Demo
 bibFile: bib.json
 ---
 
+<link rel="stylesheet" href="/hugo-cite/hugo-cite.css">
+
 # Demo Page
 
 ## Ferre hinnitibus erat accipitrem dixi Troiae tollens
