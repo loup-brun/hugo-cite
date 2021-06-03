@@ -95,8 +95,7 @@
         {{- i18n "apa_no_author_abbr" | default "n.a." | upper -}}
       </span>
       {{- else -}}
-      {{- range first 1 $displayAuthors }}
-      {{- $author := . -}}
+      {{- range $authorIndex, $author := $displayAuthors | first 2 -}}
       <span itemprop="author" itemscope itemtype="https://schema.org/Person">
         {{- with $author.given -}}
         <meta itemprop="givenName" content="{{ . }}">
@@ -105,8 +104,10 @@
         <span itemprop="familyName">{{ . | markdownify }}</span>
         {{- end -}}
       </span>
+      {{- if and (gt $displayAuthors 0) (lt (add $authorIndex 1) $displayAuthors) -}}&#32;&amp;&#32;
       {{- end -}}
-      {{ if gt (len $displayAuthors) 1 }}
+      {{- end -}}
+      {{ if gt (len $displayAuthors) 2 }}
       <em>&amp; al.</em>
       {{- end -}}
       {{- end -}}
