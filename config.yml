@@ -1,0 +1,11 @@
+module:
+  proxy: direct
+  hugoVersion:
+    min: "0.55.0"
+  mounts:
+  - source: layouts
+    target: layouts
+  - source: i18n
+    target: i18n
+  - source: static
+    target: static

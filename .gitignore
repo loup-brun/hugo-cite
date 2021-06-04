@@ -4,5 +4,5 @@
 /bower_components/
 /node_modules/
 .DS_Store
-docs/public
-docs/resources
+docs
+.idea
