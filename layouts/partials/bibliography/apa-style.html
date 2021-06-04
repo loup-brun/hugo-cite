@@ -268,6 +268,44 @@
 </span>
 {{/* -------------------- END WEBPAGE TYPE -------------------- */}}
 
+{{/* -------------------- BEGIN BLOGPOST TYPE -------------------- */}}
+{{- else if eq .type "post-weblog" -}}
+<span itemscope
+      itemtype="https://schema.org/BlogPosting"
+      data-type="blog">
+  {{- template "authorPart" . }}
+  &#32;
+  {{- template "issuedPart" . }}.
+  &#32;
+  {{- if .title -}}
+  <span itemprop="name">
+    {{- .title | markdownify -}}
+  </span>
+  {{- end -}}
+{{- if isset . "genre" -}}<span itemprop="genre">&nbsp;[{{- echoParam . "genre" -}}]</span>
+    {{- end -}}.&nbsp;
+
+  {{- if isset . "container-title" -}}
+  {{- if .editor -}}{{/* Add `In` before name of Eds. and title*/}}
+  &#32;{{- i18n "apa_in" | default "In" -}}&#32;
+  {{- template "editorPart" . }} (Eds.),&#32;
+  {{- end -}}
+
+<span itemprop="isPartOf">
+    {{- echoParam . "container-title" -}}</span>
+    {{- if isset . "volume" -}}
+    ,&#32;{{- .volume -}}
+    {{- end -}}
+    {{- if isset . "issue" }}({{ .issue }})
+    {{- end -}}
+.{{- end -}}
+  {{- if isset . "page" -}}
+  &#32;<span itemprop="pagination">{{ replace .page "-" "–" }}</span>.
+  {{- end -}}
+  {{- template "DOIPart" . -}}
+</span>
+{{/* -------------------- END BLOGPOST TYPE -------------------- */}}
+
 {{/* -------------------- BEGIN DEGREE WORK TYPE -------------------- */}}
 {{- else if eq .type "thesis" -}}
 <span itemscope
