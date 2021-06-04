@@ -55,7 +55,7 @@ Reference the CSS somewhere in your HTML templates:
 
 You must first provide a **[CSL-JSON](https://citeproc-js.readthedocs.io/en/latest/csl-json/markup.html) bibliography file**.
 (Other formats, such as BiBTeX, are _not_ supported.)
-In Zotero for instance, this can be accomplished by selecting the CSL JSON format when exporting a collection.
+In Zotero for instance, this can be accomplished by selecting the CSL-JSON format when exporting a collection.
 Just include `bib` in the filename (such as `bibliography.json`,`oh-my-bib.json`, or simply `bib.json`) and save it inside your Hugo project directory.
 
 Here is an example:
@@ -208,6 +208,18 @@ He is not an artist, or a professional writer.
 He is a programmer. {{< cite "Lessig 2002" >}}
 ```
 
+### Suppress Author
+
+For an abbreviated in-text citation form, you can add a **dash** (`-`) at the beginning of your citation key:
+
+```markdown
+<!-- Markdown -->
+
+{{</* cite "-Lessig 2002" */>}}
+```
+
+The above would render `(2002)` rather than `(Lessig, 2002)`.
+
 #### Cite a Page
 
 You can also provide a **page** as the second positional parameter:
@@ -218,7 +230,7 @@ You can also provide a **page** as the second positional parameter:
 {{< cite "Lessig 2002" 5 >}}
 ```
 
-The example above will render `(Lessig, 2020, p. 5)` (note the `p.` was added by Hugo Cite; you need not to add it).
+The example above will render `(Lessig, 2002, p. 5)` (note the `p.` was added by hugo-cite; you need not to add it).
 
 #### Cite a Page Range
 
@@ -230,7 +242,7 @@ You can instead specify a **range of pages** using a **dash** `-`, which will ou
 {{< cite "Lessig 2002" 5-6 >}}
 ```
 
-The example above will render `(Lessig, 2020, pp. 5-6)`.
+The example above will render `(Lessig, 2002, pp. 5-6)`.
 
 ## Cited Works
 
