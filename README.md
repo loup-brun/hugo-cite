@@ -215,7 +215,7 @@ For an abbreviated in-text citation form, you can add a **dash** (`-`) at the be
 ```markdown
 <!-- Markdown -->
 
-{{</* cite "-Lessig 2002" */>}}
+{{< cite "-Lessig 2002" >}}
 ```
 
 The above would render `(2002)` rather than `(Lessig, 2002)`.
