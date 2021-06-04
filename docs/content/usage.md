@@ -8,7 +8,7 @@ title: Usage
 
 You must first provide a **[CSL-JSON](https://citeproc-js.readthedocs.io/en/latest/csl-json/markup.html) bibliography file**.
 (Other formats, such as BiBTeX, are _not_ supported.)
-In Zotero for instance, this can be accomplished by selecting the CSL JSON format when exporting a collection.
+In Zotero for instance, this can be accomplished by selecting the CSL-JSON format when exporting a collection.
 Just include `bib` in the filename (such as `bibliography.json`,`oh-my-bib.json`, or simply `bib.json`) and save it inside your Hugo project directory.
 
 Here is an example:
@@ -183,7 +183,7 @@ You can also provide a **page** as the second positional parameter:
 {{</* cite "Lessig 2002" 5 */>}}
 ```
 
-The example above will render `(Lessig, 2020, p. 5)` (note the `p.` was added by Hugo Cite; you need not to add it).
+The example above will render `(Lessig, 2002, p. 5)` (note the `p.` was added by hugo-cite; you need not to add it).
 
 ### Cite a Page Range
 
@@ -195,7 +195,7 @@ You can instead specify a **range of pages** using a **dash** `-`, which will ou
 {{</* cite "Lessig 2002" 5-6 */>}}
 ```
 
-The example above will render `(Lessig, 2020, pp. 5-6)`.
+The example above will render `(Lessig, 2002, pp. 5-6)`.
 
 ## Cited Works
 
