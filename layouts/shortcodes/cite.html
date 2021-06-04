@@ -121,28 +121,31 @@
       {{- if not $suppressAuthor -}}
         {{- $displayAuthors := $currentRef.author -}}
         {{- if not $currentRef.author -}}
-        {{- $displayAuthors = $currentRef.editor -}}
+          {{- $displayAuthors = $currentRef.editor -}}
         {{- end -}}
         {{- if not $displayAuthors -}}
-        <span rel="noauthor">
-          {{- i18n "apa_no_author_abbr" | default "n.a." | upper -}}
-        </span>
+          <span rel="noauthor">
+            {{- i18n "apa_no_author_abbr" | default "n.a." | upper -}}
+          </span>
         {{- else -}}
-        {{- range $authorIndex, $author := $displayAuthors | first 2 -}}
-        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
-          {{- with $author.given -}}
-          <meta itemprop="givenName" content="{{ . }}">
+          {{- range $authorIndex, $author := $displayAuthors | first 2 }}
+            <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+              {{- with $author.given -}}
+                <meta itemprop="givenName" content="{{ . }}">
+              {{- end -}}
+              {{ with $author.family -}}
+                <span itemprop="familyName">{{ . | markdownify }}</span>
+              {{- end -}}
+            </span>
+            {{- if and (eq $authorIndex 0) (gt (len $displayAuthors) 2) -}}
+            ,&#32;
+            {{- end -}}
+            {{- if and (eq (len $displayAuthors) 2) (eq $authorIndex 0) -}}&#32;&amp;&#32;
+            {{- end -}}
           {{- end -}}
-          {{ with $author.family -}}
-          <span itemprop="familyName">{{ . | markdownify }}</span>
+          {{ if gt (len $displayAuthors) 2 }}
+            <em>&amp; al.</em>
           {{- end -}}
-        </span>
-        {{- if and (gt $displayAuthors 0) (lt (add $authorIndex 1) $displayAuthors) -}}&#32;&amp;&#32;
-        {{- end -}}
-        {{- end -}}
-        {{ if gt (len $displayAuthors) 2 }}
-        <em>&amp; al.</em>
-        {{- end -}}
         {{- end -}},&#32;
       {{- end -}}
       {{- /* -------------------- END Display authors -------------------- */ -}}
