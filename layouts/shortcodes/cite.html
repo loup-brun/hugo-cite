@@ -128,12 +128,12 @@
             {{- i18n "apa_no_author_abbr" | default "n.a." | upper -}}
           </span>
         {{- else -}}
-          {{- range $authorIndex, $author := $displayAuthors | first 2 }}
+          {{- range $authorIndex, $author := $displayAuthors | first 2 -}}
             <span itemprop="author" itemscope itemtype="https://schema.org/Person">
               {{- with $author.given -}}
                 <meta itemprop="givenName" content="{{ . }}">
               {{- end -}}
-              {{ with $author.family -}}
+              {{- with $author.family -}}
                 <span itemprop="familyName">{{ . | markdownify }}</span>
               {{- end -}}
             </span>
