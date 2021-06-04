@@ -45,7 +45,7 @@
 {{/* -------------------- BEGIN Citation style -------------------- */}}
 {{- $citationStyle := "apa" }}
 {{- if $.Site.Params.citationStyle }}
-  {{- if templates.Exists (printf "aprtials/bibliography/%s-style.html" $.Site.Params.citationStyle) }}
+  {{- if templates.Exists (printf "partials/bibliography/%s-style.html" $.Site.Params.citationStyle) }}
     {{- $citationStyle = $.Site.Params.citationStyle }}
   {{- end }}
 {{- end }}
