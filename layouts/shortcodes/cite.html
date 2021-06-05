@@ -25,8 +25,8 @@
 
 */}}
 
-{{- $errorMissingValue := "1 or 2 values must be supplied with this shortcode. You provided %d params. The first is required and should match an ID in the CSL-JSON bibliogrpahy file, the second is optional, and should be a page number or range of page numbers. Example: {{< cite \"Faure 1909\" \"304\" >}}" -}}
-{{- $errorMissingNamedParams := "You must at least provide a citation key. It is required and should match an ID in the CSL-JSON bibliogrpahy file. Example: {{< cite key=\"Faure 1909\" >}}" -}}
+{{- $errorMissingValue := "1 or 2 values must be supplied with this shortcode. You provided %d params. The first is required and should match an ID in the CSL-JSON bibliography file, the second is optional, and should be a page number or range of page numbers. Example: {{< cite \"Faure 1909\" \"304\" >}}" -}}
+{{- $errorMissingNamedParams := "You must at least provide a citation key. It is required and should match an ID in the CSL-JSON bibliography file. Example: {{< cite key=\"Faure 1909\" >}}" -}}
 
 {{- $defaultErrString := "No matching key was found for `%s` in the references. Please make sure to provide an available ID in your `bib.json` file." -}}
 
@@ -34,7 +34,6 @@
 {{- $key := "" -}}
 {{- $pages := "" -}}
 {{- $suppressAuthor := false -}}
-{{- warnf "key is %s" $key -}}
 
 {{/* -------------------- Named/Positional Params -------------------- */}}
 {{- if .IsNamedParams }}
@@ -105,7 +104,6 @@
 
 {{- range where $bibliography "id" "eq" $key -}}
   {{- $currentRef := . -}}
-  {{ warnf "in loop, ref is %s" $key }}
 
   {{/* Add to the collection of cited references */}}
   {{- $.Page.Scratch.SetInMap "citedBib" $key $currentRef -}}
