@@ -5,7 +5,7 @@ description: "Easily manage your bibliography with Hugo."
 copyright: MIT
 theme: 
 - book
-- ../..
+- ../../../hugo-cite
 
 markup:
   goldmark:
