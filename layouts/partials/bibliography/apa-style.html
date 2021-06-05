@@ -114,7 +114,18 @@
      itemprop="identifier"
      itemtype="https://schema.org/URL">{{ .URL }}</a>
   {{- end -}}
-{{- end }}{{/* END DOI*/}}
+{{- end -}}
+{{- /* END DOI*/ -}}
+
+{{/* BEGIN ArchivalID */}}
+{{- define "ArchivalID" }}
+  {{ if isset . "archive" -}}&#32;{{ i18n "archive_available_from" | default "Available from" }}
+    <meta itemprop="Organization" itemtype="http://schema.org/Organization" itemscope>
+    <span itemprop="name">{{- echoParam . "archive" -}}</span>.
+    {{- if isset . "archive_location" -}}&#32; ({{- echoParam . "archive_location" -}}){{- end }}.
+  {{- end }}
+{{- end -}}
+{{- /* END ArchivalID */ -}}
 
 {{/* -------------------- BEGIN TYPES -------------------- */}}
 {{/* -------------------- BEGIN BOOK TYPE -------------------- */}}

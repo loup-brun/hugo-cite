@@ -1,6 +1,9 @@
 # APA Style Localization
 # EN
 
+apa_available_from:
+  other: "Available from"
+
 apa_in:
   other: "In"
 
