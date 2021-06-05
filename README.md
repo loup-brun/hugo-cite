@@ -208,14 +208,14 @@ He is not an artist, or a professional writer.
 He is a programmer. {{< cite "Lessig 2002" >}}
 ```
 
-### Suppress Author
+#### Suppress Author
 
 For an abbreviated in-text citation form, you can add a **dash** (`-`) at the beginning of your citation key:
 
 ```markdown
 <!-- Markdown -->
 
-{{</* cite "-Lessig 2002" */>}}
+{{< cite "-Lessig 2002" >}}
 ```
 
 The above would render `(2002)` rather than `(Lessig, 2002)`.
