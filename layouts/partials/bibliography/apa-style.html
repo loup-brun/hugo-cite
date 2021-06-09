@@ -114,7 +114,18 @@
      itemprop="identifier"
      itemtype="https://schema.org/URL">{{ .URL }}</a>
   {{- end -}}
-{{- end }}{{/* END DOI*/}}
+{{- end -}}
+{{- /* END DOI*/ -}}
+
+{{/* BEGIN ArchivalID */}}
+{{- define "ArchivalID" }}
+  {{ if isset . "archive" -}}&#32;{{ i18n "archive_available_from" | default "Available from" }}
+    <meta itemprop="Organization" itemtype="http://schema.org/Organization" itemscope>
+    <span itemprop="name">{{- echoParam . "archive" -}}</span>.
+    {{- if isset . "archive_location" -}}&#32; ({{- echoParam . "archive_location" -}}){{- end }}.
+  {{- end }}
+{{- end -}}
+{{- /* END ArchivalID */ -}}
 
 {{/* -------------------- BEGIN TYPES -------------------- */}}
 {{/* -------------------- BEGIN BOOK TYPE -------------------- */}}
@@ -337,6 +348,39 @@
   {{- template "DOIPart" . -}}
 </span>
 {{/* -------------------- END DEGREE WORK TYPE -------------------- */}}
+
+{{/* -------------------- BEGIN REPORT TYPE -------------------- */}}
+{{- else if eq .type "report" -}}
+<span itemscope
+      itemtype="https://schema.org/Report"
+      data-type="report">
+  {{- template "authorPart" . }}
+  &#32;
+  {{- template "issuedPart" . }}.
+  &#32;
+  {{- if .title -}}
+  <span itemprop="name">
+    <i>{{- .title | markdownify -}}</i>
+  </span>
+  {{- end -}}
+  {{- if isset . "number" -}}<span itemprop="reportNumber">&nbsp;({{- echoParam . "number" -}})</span>
+    {{- end -}}.&nbsp;
+  {{- if isset . "publisher-place" -}}
+  <meta itemprop="contentLocation"
+        value="{{- echoParam . "publisher-place" -}}">
+  {{- end -}}
+  {{- with .publisher -}}
+  <span itemprop="Organization"
+        itemtype="http://schema.org/Organization"
+        itemscope>
+    <span itemprop="name">
+      {{- . -}}{{- end -}}
+    </span> {{ if isset . "publisher-place" -}}:&#32; <span itemprop="location">{{- echoParam . "publisher-place" -}}</span></span>.
+  {{- end }}
+  {{- template "ArchivalID" . -}}
+  {{- template "DOIPart" . -}}
+</span>
+{{/* -------------------- END REPORT TYPE -------------------- */}}
 
 {{/* -------------------- BEGIN DEFAULT APA -------------------- */}}
 {{- else -}}

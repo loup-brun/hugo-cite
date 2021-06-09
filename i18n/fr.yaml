@@ -1,6 +1,9 @@
 # APA Style Localization
 # FR
 
+apa_available_from:
+  other: "Disponible à l’adresse"
+
 apa_in:
   other: "Dans"
 
@@ -11,4 +14,4 @@ apa_no_date_abbr:
   other: "s.d."
 
 apa_retrieved_from:
-  other: "Consulté à l'adresse"
+  other: "Consulté à l’adresse"
