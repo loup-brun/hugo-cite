@@ -2,13 +2,13 @@
 /* Hugo-Cite.css
 /* ----------------------------------------------------------------------------- */
 
-.hugo-cite-intext {
+.hugo-cite-group {
   display: inline-block;
   vertical-align: baseline; /*compensate for lower height */
   position: relative;
   font-size: .85em; /* reduce to avoid some breaks */
 }
-.hugo-cite-intext 
+.hugo-cite-group
   .hugo-cite-citation {
     visibility: hidden;
     background-color: #ffffff;
@@ -31,7 +31,7 @@
     opacity: 0;
     transform: translateY(-8px);
 }
-.hugo-cite-intext:hover
+.hugo-cite-group:hover
   .hugo-cite-citation {
     visibility: visible;
     transition: visibility 0s 0s, transform .3s, opacity .3s;

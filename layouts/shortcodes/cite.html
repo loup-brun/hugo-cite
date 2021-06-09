@@ -108,70 +108,71 @@
 
       {{- range where $bibliography "id" "eq" $key -}}
         {{- $currentRef := . -}}
+        <span class="hugo-cite-group">
 
-        {{/* Add to the collection of cited references */}}
-        {{- $.Page.Scratch.SetInMap "citedBib" $key $currentRef -}}
+          {{/* Add to the collection of cited references */}}
+          {{- $.Page.Scratch.SetInMap "citedBib" $key $currentRef -}}
 
-        {{/* Add to the collection of cited references */}}
-        {{- $.Page.Scratch.SetInMap "citedBib" $key $currentRef -}}
+          {{/* Add to the collection of cited references */}}
+          {{- $.Page.Scratch.SetInMap "citedBib" $key $currentRef -}}
 
-        <a href="#{{- $key | urlize -}}"><span class="visually-hidden">Citation: </span>
-          {{- $reference := . -}}
+          <a href="#{{- $key | urlize -}}"><span class="visually-hidden">Citation: </span>
+            {{- $reference := . -}}
 
-          {{- /* -------------------- BEGIN Display authors -------------------- */ -}}
-          {{- if not $suppressAuthor -}}
-            {{- $displayAuthors := $reference.author -}}
-            {{- if not $reference.author -}}
-              {{- $displayAuthors = $reference.editor -}}
-            {{- end -}}
-            {{- if not $displayAuthors -}}
-              <span rel="noauthor">
-                {{- i18n "apa_no_author_abbr" | default "n.a." | upper -}}
-              </span>
-            {{- else -}}
-              {{- range $authorIndex, $author := $displayAuthors | first 2 -}}
-                <span itemprop="author" itemscope itemtype="https://schema.org/Person">
-                  {{- with $author.given -}}
-                    <meta itemprop="givenName" content="{{ . }}">
-                  {{- end -}}
-                  {{- with $author.family -}}
-                    <span itemprop="familyName">{{ . | markdownify }}</span>
-                  {{- end -}}
+            {{- /* -------------------- BEGIN Display authors -------------------- */ -}}
+            {{- if not $suppressAuthor -}}
+              {{- $displayAuthors := $reference.author -}}
+              {{- if not $reference.author -}}
+                {{- $displayAuthors = $reference.editor -}}
+              {{- end -}}
+              {{- if not $displayAuthors -}}
+                <span rel="noauthor">
+                  {{- i18n "apa_no_author_abbr" | default "n.a." | upper -}}
                 </span>
-                {{- if and (eq $authorIndex 0) (gt (len $displayAuthors) 2) -}}
-                ,&#32;
+              {{- else -}}
+                {{- range $authorIndex, $author := $displayAuthors | first 2 -}}
+                  <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    {{- with $author.given -}}
+                      <meta itemprop="givenName" content="{{ . }}">
+                    {{- end -}}
+                    {{- with $author.family -}}
+                      <span itemprop="familyName">{{ . | markdownify }}</span>
+                    {{- end -}}
+                  </span>
+                  {{- if and (eq $authorIndex 0) (gt (len $displayAuthors) 2) -}}
+                  ,&#32;
+                  {{- end -}}
+                  {{- if and (eq (len $displayAuthors) 2) (eq $authorIndex 0) -}}&#32;&amp;&#32;
+                  {{- end -}}
                 {{- end -}}
-                {{- if and (eq (len $displayAuthors) 2) (eq $authorIndex 0) -}}&#32;&amp;&#32;
+                {{ if gt (len $displayAuthors) 2 }}
+                  <em>&amp; al.</em>
                 {{- end -}}
-              {{- end -}}
-              {{ if gt (len $displayAuthors) 2 }}
-                <em>&amp; al.</em>
-              {{- end -}}
-            {{- end -}},&#32;
-          {{- end -}}
-          {{- /* -------------------- END Display authors -------------------- */ -}}
+              {{- end -}},&#32;
+            {{- end -}}
+            {{- /* -------------------- END Display authors -------------------- */ -}}
 
-          {{- if and (isset $reference "issued") (isset $reference.issued "date-parts") -}}
-            {{- range $index, $dateParts := (index .issued "date-parts") -}}{{/* range of dates */}}
-              {{- range first 1 $dateParts -}}{{/* First element in date-part is the year */ -}}
-              <span itemprop="datePublished">
-                {{- . -}}
-              </span>
+            {{- if and (isset $reference "issued") (isset $reference.issued "date-parts") -}}
+              {{- range $index, $dateParts := (index .issued "date-parts") -}}{{/* range of dates */}}
+                {{- range first 1 $dateParts -}}{{/* First element in date-part is the year */ -}}
+                <span itemprop="datePublished">
+                  {{- . -}}
+                </span>
+                {{- end -}}
               {{- end -}}
             {{- end -}}
-          {{- end -}}
-          {{- $currentPages := index $pages $keyIndex -}}
-          {{- with $currentPages -}},&#32;
-          {{- $formatedPages := (printf "p.&nbsp;%s" $currentPages) | safeHTML -}}
-          {{- if gt (findRE "-" $currentPages) 0 -}}{{/* If `$pages` contains a dash */}}
-          {{- $formatedPages = (printf "pp.&nbsp;%s" $currentPages) | safeHTML -}}
-          {{- end -}}
-          {{- $formatedPages }}{{- end -}}
-        </a>
+            {{- $currentPages := index $pages $keyIndex -}}
+            {{- with $currentPages -}},&#32;
+            {{- $formatedPages := (printf "p.&nbsp;%s" $currentPages) | safeHTML -}}
+            {{- if gt (findRE "-" $currentPages) 0 -}}{{/* If `$pages` contains a dash */}}
+            {{- $formatedPages = (printf "pp.&nbsp;%s" $currentPages) | safeHTML -}}
+            {{- end -}}
+            {{- $formatedPages }}{{- end -}}
+          </a>
 
-        {{- /* Eliminate space between css-hidden citation hover block */ -}}
+          {{- /* Eliminate space between css-hidden citation hover block */ -}}
 
-        <span class="hugo-cite-citation"> {{ partial $partialPath $reference }}</span>
+          <span class="hugo-cite-citation"> {{ partial $partialPath $reference }}</span></span>
 
         {{- if lt (add 1 $keyIndex) $totalRefs -}};&#32;{{- end -}}
 
