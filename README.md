@@ -244,6 +244,29 @@ You can instead specify a **range of pages** using a **dash** `-`, which will ou
 
 The example above will render `(Lessig, 2002, pp. 5-6)`.
 
+
+#### Combine Multiple Citations
+
+You can combine **multiple citations** in a single block, using the **semi-colon** (`;`) separator (no spaces around the semi-colon):
+
+```markdown
+<!-- Markdown -->
+
+{{</* cite "Lessig2002;Nussbaum2011;Dewey1938" */>}}
+```
+
+The above would render `(Lessig, 2002; Nussbaum, 2011; Dewey, 1938)`.
+
+Works with pagination too, **in the matching order** of the citation keys:
+
+```markdown
+<!-- Markdown -->
+
+{{</* cite "Lessig2002;Nussbaum2011;Dewey1938" "5-6;;25" */>}}
+```
+
+The above would render `(Lessig, 2002, pp. 5-6; Nussbaum, 2011; Dewey, 1938, p. 25)`.
+
 ## Cited Works
 
 ```markdown
