@@ -1,4 +1,4 @@
-{{/*
+{{- /*
 
   This shortcode adds a linked Author Date citation reference to the text, and a
   hover pop-up with the full citation text. It also adds the citation to a map
@@ -23,21 +23,21 @@
   matter with the `bibFile` parameter, or in a leaf bundle, with "bib" in
   the file name.
 
-*/}}
+*/ -}}
 
 {{- $errorMissingValue := "1 or 2 values must be supplied with this shortcode. You provided %d params. The first is required and should match an ID in the CSL-JSON bibliography file, the second is optional, and should be a page number or range of page numbers. Example: {{< cite \"Faure 1909\" \"304\" >}}" -}}
 {{- $errorMissingNamedParams := "You must at least provide a citation key. It is required and should match an ID in the CSL-JSON bibliography file. Example: {{< cite key=\"Faure 1909\" >}}" -}}
 
 {{- $defaultErrString := "No matching key was found for `%s` in the references. Please make sure to provide an available ID in your `bib.json` file." -}}
 
-{{/* Set variables*/}}
+{{- /* Set variables*/ -}}
 {{- $key := "" -}}
 {{- $keys := slice "" ";" -}}
 {{- $pages := slice "" ";" -}}
 {{- $suppressAuthor := false -}}
 {{- $keySeparator := ";" -}}
 
-{{/* -------------------- Named/Positional Params -------------------- */}}
+{{- /* -------------------- Named/Positional Params -------------------- */ -}}
 {{- if .IsNamedParams }}
   {{/* -------------------- a) Named -------------------- */}}
   {{- if not (.Get "key") -}}
@@ -68,7 +68,7 @@
 {{- $totalRefs := len $keys -}}
 
 
-{{/* -------------------- BEGIN Citation style -------------------- */}}
+{{- /* -------------------- BEGIN Citation style -------------------- */ -}}
 {{- $citationStyle := "apa" }}
 {{- if $.Site.Params.citationStyle }}
   {{- if templates.Exists (printf "partials/bibliography/%s-style.html" $.Site.Params.citationStyle) }}
@@ -76,12 +76,12 @@
   {{- end }}
 {{- end }}
 {{- $partialPath := string (printf "bibliography/%s-style.html" $citationStyle) }}
-{{/* -------------------- END Citation style -------------------- */}}
+{{- /* -------------------- END Citation style -------------------- */ -}}
 
-{{/* -------------------- BEGIN Bibliography path -------------------- */}}
+{{- /* -------------------- BEGIN Bibliography path -------------------- */ -}}
 {{- $bibliographyPath := "" }}
 
-{{/* Default: check for a JSON file in the leaf bundle. */}}
+{{- /* Default: check for a JSON file in the leaf bundle. */ -}}
 {{- $pageResource := $.Page.Resources.GetMatch "*bib*.json" -}}
 {{- if $pageResource }}
 {{- $constructedBibResource := printf "content/%s%s" $.Page.File.Dir $pageResource.Name }}
@@ -95,7 +95,7 @@
 {{- $bibliographyPath = $.Page.Params.bibFile -}}
 {{- end }}
 
-{{- if gt (len $bibliographyPath) 0 -}}{{/* Begin Bibliography Loop */}}
+{{- if gt (len $bibliographyPath) 0 -}}{{- /* Begin Bibliography Loop */ -}}
 {{- $bibliography := getJSON $bibliographyPath -}}
 {{- /* -------------------- END Bibliography path -------------------- */ -}}
 
@@ -110,10 +110,10 @@
         {{- $currentRef := . -}}
         <span class="hugo-cite-group">
 
-          {{/* Add to the collection of cited references */}}
+          {{- /* Add to the collection of cited references */ -}}
           {{- $.Page.Scratch.SetInMap "citedBib" $key $currentRef -}}
 
-          {{/* Add to the collection of cited references */}}
+          {{- /* Add to the collection of cited references */ -}}
           {{- $.Page.Scratch.SetInMap "citedBib" $key $currentRef -}}
 
           <a href="#{{- $key | urlize -}}"><span class="visually-hidden">Citation: </span>
@@ -191,4 +191,4 @@
 
     {{- end -}}
     {{- /* END loop over keys*/ -}}
-    )</span>
+    )</span>{{- /* caution: to ensure correct trim, have no white space / line break after this comment! */ -}}
