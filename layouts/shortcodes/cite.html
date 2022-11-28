@@ -110,10 +110,10 @@
         {{- $currentRef := . -}}
         <span class="hugo-cite-group">
 
-          {{/* Add to the collection of cited references */}}
+          {{- /* Add to the collection of cited references */ -}}
           {{- $.Page.Scratch.SetInMap "citedBib" $key $currentRef -}}
 
-          {{/* Add to the collection of cited references */}}
+          {{- /* Add to the collection of cited references */ -}}
           {{- $.Page.Scratch.SetInMap "citedBib" $key $currentRef -}}
 
           <a href="#{{- $key | urlize -}}"><span class="visually-hidden">Citation: </span>
