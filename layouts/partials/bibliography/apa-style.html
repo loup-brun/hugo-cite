@@ -382,6 +382,41 @@
 </span>
 {{/* -------------------- END REPORT TYPE -------------------- */}}
 
+{{/* -------------------- BEGIN MOTION PICTURE TYPE -------------------- */}}
+{{- else if eq .type "motion_picture" -}}
+<span itemscope
+      itemtype="https://schema.org/Movie"
+      data-type="movie">
+  {{- template "authorPart" . }}
+  &#32;(Director).
+  {{- template "issuedPart" . }}.
+  &#32;
+  {{- if .title -}}
+  <span itemprop="name">
+    <i>{{/* italicize title */}}
+      {{- .title | markdownify -}}
+      {{- if .subtitle }}: {{ .subtitle | markdownify }}{{- end -}}
+    </i></span>{{/* close to avoid space */}}
+  {{- end -}}
+  {{- if isset . "volume" -}}
+  &#32;(<span>{{ .volume -}}</span>)
+  {{- end -}}
+  &#32;[Film].
+  {{- if isset . "publisher-place" -}}
+  <meta itemprop="contentLocation"
+        content='{{- echoParam . "publisher-place" -}}'>
+  {{- end -}}
+  {{- with .publisher -}}&#32;
+  <span itemprop="publisher" itemtype="http://schema.org/Organization" itemscope="">
+    <span itemprop="name">
+      {{- . -}}
+    </span></span>.
+  {{- end }}
+
+  {{- template "DOIPart" . -}}
+</span>
+{{/* -------------------- END MOTION PICTURE TYPE -------------------- */}}
+
 {{/* -------------------- BEGIN DEFAULT APA -------------------- */}}
 {{- else -}}
 <span itemscope
