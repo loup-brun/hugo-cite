@@ -59,7 +59,7 @@
   {{- if lt (len .Params) 1 -}}
     {{- errorf $errorMissingValue (len .Params) -}}
   {{- else -}}
-    {{- $key = (.Get 0) | replaceRE "^-(.+)" "$1" -}}
+    {{- $key = (.Get 0) | replaceRE "^-(.+)" "$1" | replaceRE "(.+)-$" "$1" -}}
     {{- $keys = split $key $keySeparator -}}
     {{- $pages = string (.Get 1) -}}
     {{- if $pages -}}
@@ -68,12 +68,13 @@
     {{- if (findRE "^-(.+)" (.Get 0) 1) -}}
       {{- $suppressAuthor = true -}}
     {{- end -}}
+    {{- if (findRE "(.+)-$" (.Get 0) 1) -}}
+      {{- $textCite = true -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 
-
 {{- $totalRefs := len $keys -}}
-
 
 {{/* -------------------- BEGIN Citation style -------------------- */}}
 {{- $citationStyle := "apa" }}
