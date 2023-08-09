@@ -154,7 +154,7 @@
               {{ if gt (len $displayAuthors) 2 }}
                 <em>&amp; al.</em>
               {{- end -}}
-            {{- end -}},&#32;
+            {{- end -}}{{- if not $textCite }},{{- end }}&#32;
           {{- end -}}
           {{- /* -------------------- END Display authors -------------------- */ -}}
 
